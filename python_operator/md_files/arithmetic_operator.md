@@ -611,58 +611,43 @@ seconds = total_seconds % 60
 
 ---
 
-# 17. 🎯 Quick Revision Capsule
-
-```text
-+    → Add
--    → Subtract
-*    → Multiply
-/    → Normal Division
-%    → Remainder
-//   → Floor
-**   → Power
-```
-
-### ⭐ Most Important
-
-```text
-/   → Exact/normal division
-//  → Complete groups / floor
-%   → Remaining items
-```
-
-### Example
-
-```text
-23 ÷ 5
-
-23 / 5   → 4.6
-23 // 5  → 4
-23 % 5   → 3
-```
-
----
-
-# 🎤 Short Explanation
-
-> **"Operator ek symbol hai jo Python ko batata hai ki kya operation perform karna hai. Jaise `+` Add karta hai, `-` Subtract karta hai, `*` Multiply karta hai aur `/` normal division karta hai. `%` remainder deta hai, `//` floor value deta hai aur `**` power ke liye use hota hai."**
-
-Then ask:
-
----
-
-# 🚀 Next Topic
-
-After Arithmetic Operators:
-
-```text
-Arithmetic
-    ↓
-Assignment
-    ↓
-Comparison
-    ↓
-Logical
-    ↓
-if / elif / else
+# 17. 🎯 Arithmetic Operators practice:
+```python
+1. print(17 % 5)
+2. print(20 / 4)
+3. print(17 // 5)
+4. print(2 ** 5)
+5. 
+    a = 25
+    b = 4
+    print(a // b)
+6.
+    a = 25
+    b = 4
+    print(a % b)
+7.  print(10 + 5 * 2)
+8.  print(30 - 4 * 5)
+9.  print(25 % 4 + 10)
+10. print(2 ** 3 + 5)
+11. print((10 + 5) * 2)
+12. print(20 - (6 + 4))
+13. print((8 + 4) // 3)
+14. print((15 + 5) % 6)
+15. print((20 - 5) / 3)
+16. print(10 + 5 * 2 - 3)
+17. print(20 - 6 / 2 + 3)
+18. print(10 + 2 ** 3 * 2)
+19. print(25 % 4 * 3 + 2)
+20. print(25 % 4 * 3 + 2)
+21. print(50 - 10 // 2 * 3)
+22. print((10 + 5) * 2 - 8 / 4)
+23. print(20 + (10 - 4) * 2)
+24. print((2 + 3) ** 2 - 10 % 3)
+25. print(100 - (20 + 5) * 2)
+26. print((5 + 2) * 3 ** 2)
+27. print(20 - 5 * 2 + 10 / 5)
+28. print((50 % 7 + 3) * 4)
+29. print(50 % 7 + 3 * 4)
+30. print(2 ** 3 ** 2)
+31. print((2 ** 3) ** 2)
 ```
