@@ -643,24 +643,11 @@ seconds = total_seconds % 60
 
 ---
 
-# 🎤 Teacher's Short Explanation
-
-You can explain the whole topic like this:
+# 🎤 Short Explanation
 
 > **"Operator ek symbol hai jo Python ko batata hai ki kya operation perform karna hai. Jaise `+` Add karta hai, `-` Subtract karta hai, `*` Multiply karta hai aur `/` normal division karta hai. `%` remainder deta hai, `//` floor value deta hai aur `**` power ke liye use hota hai."**
 
 Then ask:
-
-> **"Agar mere paas 23 students hain aur ek group mein 5 students aa sakte hain, to kitne complete groups banenge aur kitne students bachenge?"**
-
-Students will naturally discover:
-
-```python
-23 // 5  # 4 groups
-23 % 5   # 3 students left
-```
-
-That gives them a practical reason to remember `//` and `%`.
 
 ---
 
