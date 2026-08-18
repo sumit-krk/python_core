@@ -130,7 +130,7 @@ x = 15
 
 ------------------------------------------------------------------------
 
-## 5. Real-Life Example: Bank Balance 💰
+## 5. Real-Life Example: Bank Balance
 
 Suppose your bank balance is ₹1000:
 
@@ -356,7 +356,7 @@ print(x)
 
 ------------------------------------------------------------------------
 
-## Level 3 — Think Carefully 🤔
+## Level 3 — Think Carefully
 
 ### Q7
 
@@ -399,7 +399,7 @@ print(x)
 
 ------------------------------------------------------------------------
 
-# 🔥 Challenge
+# Challenge
 
 Predict the final value of `score`:
 
@@ -418,7 +418,7 @@ print(score)
 
 ------------------------------------------------------------------------
 
-# 🧠 Easy Way to Remember
+# Easy Way to Remember
 
 Think of assignment operators as:
 
@@ -436,7 +436,7 @@ Think of assignment operators as:
 
 ------------------------------------------------------------------------
 
-# 🎯 One-Line Definition
+# One-Line Definition
 
 > **Assignment operators are used to assign a value to a variable or
 > update its existing value.**

@@ -1,4 +1,4 @@
-# 🐍 Python Operators
+# Python Operators
 
 # 1. What is an Operator?
 
@@ -20,7 +20,7 @@ Here:
 └─────────── Operand
 ```
 
-### 🧠 Easy way to remember
+### Easy way to remember
 
 > **Operator = What operation to perform?**  
 > **Operand = On which value?**
@@ -94,7 +94,7 @@ Output:
 5
 ```
 
-### 🎤 Capsule
+### Capsule
 
 > `-` → **Subtract**
 
@@ -119,7 +119,7 @@ Output:
 200
 ```
 
-### 🎤 Capsule
+### Capsule
 
 > `*` → **Multiply**
 
@@ -141,7 +141,7 @@ Output:
 3.5
 ```
 
-### ⚠️ Important
+### Important
 
 Python's `/` returns a **float**.
 
@@ -159,7 +159,7 @@ not:
 
 > `/` → **Normal Division**
 
-🧠 **Memory:** Single slash `/` → Normal division.
+**Memory:** Single slash `/` → Normal division.
 
 ---
 
@@ -186,7 +186,7 @@ Because:
 10 - 9 = 1
 ```
 
-### 🎯 Common use: Even / Odd
+### Common use: Even / Odd
 
 ```python
 number = 8
@@ -210,7 +210,7 @@ number % 2 == 0
 
 Otherwise → **Odd**
 
-### 🎤 Capsule
+### Capsule
 
 > `%` → **Remainder**
 
@@ -232,7 +232,7 @@ Output:
 3
 ```
 
-### ⭐ Best way to understand `//` and `%`
+### Best way to understand `//` and `%`
 
 Suppose:
 
@@ -270,7 +270,7 @@ Remember:
 > `//` → **Complete groups**  
 > `%` → **Remaining items**
 
-### ⚠️ Important: Negative Numbers
+### Important: Negative Numbers
 
 `//` does **not** simply remove the decimal.
 
@@ -296,7 +296,7 @@ Why?
 
 ---
 
-# 10. ⚡ Power `**`
+# 10. Power `**`
 
 Used for exponentiation.
 
@@ -328,15 +328,15 @@ Output:
 25
 ```
 
-### 🎤 Capsule
+### Capsule
 
 > `**` → **Power**
 
-🧠 **Memory:** Double star `**` → Power.
+**Memory:** Double star `**` → Power.
 
 ---
 
-# 11. 🧠 `/` vs `//` vs `%`
+# 11. `/` vs `//` vs `%`
 
 Suppose:
 
@@ -363,7 +363,7 @@ Remaining          → 3     → %
 
 ---
 
-# 12. 🧮 Operator Precedence
+# 12. Operator Precedence
 
 What will this print?
 
@@ -415,7 +415,7 @@ Output:
 
 ---
 
-# 13. 🧵 Bonus: `+` with Strings
+# 13. Bonus: `+` with Strings
 
 `+` can also join strings.
 
@@ -441,7 +441,7 @@ Strings → + means Concatenation
 
 ---
 
-# 14. ⚠️ Common Beginner Mistakes
+# 14. Common Beginner Mistakes
 
 | Mistake | Correct |
 |---|---|
@@ -507,7 +507,7 @@ print((10 + 5) * 2)
 
 ---
 
-# 16. 📝 Practice — Write a Program
+# 16. Practice — Write a Program
 
 ### Q1. Even or Odd
 
@@ -582,7 +582,7 @@ Perimeter = 2 × (length + width)
 
 ---
 
-### Q5. Time Converter ⭐
+### Q5. Time Converter
 
 Given:
 
@@ -611,7 +611,7 @@ seconds = total_seconds % 60
 
 ---
 
-# 17. 🎯 Arithmetic Operators practice:
+# 17. Arithmetic Operators practice:
 ```python
 1. print(17 % 5)
 2. print(20 / 4)

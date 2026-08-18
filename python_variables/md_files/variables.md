@@ -1,8 +1,8 @@
-# 1. 🧠 What Is a Variable?
+# 1. What Is a Variable?
 
 A **variable** is a **name that refers to a value** in a Python program.
 
-### 🏠 Think of it like a labeled box
+### Think of it like a labeled box
 
 Imagine you have three boxes:
 
@@ -28,13 +28,13 @@ age   ───────► 18
 marks ───────► 85.5
 ```
 
-### 🎯 Simple definition
+### Simple definition
 
 > **A variable is a meaningful name used to refer to a value so that we can use that value later in our program.**
 
 ---
 
-## 🌍 Real-Life Example
+## Real-Life Example
 
 Suppose a college has a student record:
 
@@ -69,7 +69,7 @@ Rahul
 ```
 
 ---
-# 2. ✍️ Creating a Variable
+# 2. Creating a Variable
 The basic syntax is:
 
 ```text
@@ -92,7 +92,7 @@ age = 18
 │     └── Value
 └──────── Variable name
 ```
-## ⭐ What Does `=` Mean?
+## What Does `=` Mean?
 
 In Python, `=` is called the **assignment operator**.
 
@@ -109,7 +109,7 @@ age = 18
 Read it as:
 
 > **"Assign 18 to age."**
-# 3. 📏 Variable Naming Rules
+# 3. Variable Naming Rules
 
 Python has specific rules for variable names.
 
@@ -133,7 +133,7 @@ marks10 = 95
 room2 = "Lab"
 ```
 
-### ❌ Invalid
+### Invalid
 
 ```python
 1student = "Rahul"
@@ -141,7 +141,7 @@ room2 = "Lab"
 2room = "Lab"
 ```
 
-> 🧠 **Remember:** A variable name can contain numbers, but it cannot **start** with a number.
+> **Remember:** A variable name can contain numbers, but it cannot **start** with a number.
 
 ```text
 student1   ✅
@@ -247,7 +247,7 @@ print(keyword.kwlist)
 ```
 
 ---
-# 4. 🔤 Python Is Case-Sensitive
+# 4. Python Is Case-Sensitive
 Python treats uppercase and lowercase letters as different.
 
 ```python
@@ -272,7 +272,7 @@ Output:
 40
 ```
 
-### ⚠️ Best practice
+### Best practice
 
 Avoid confusing names such as:
 
@@ -290,9 +290,9 @@ teacher_age = 30
 ```
 
 ---
-# 5. ✨ Good vs Bad Variable Names
+# 5. Good vs Bad Variable Names
 
-### ❌ Less meaningful
+### Less meaningful
 
 ```python
 x = 80
@@ -300,7 +300,7 @@ y = 18
 z = "Rahul"
 ```
 
-### ✅ Meaningful
+### Meaningful
 
 ```python
 marks = 80
@@ -326,16 +326,16 @@ marks = 80
 
 immediately tells us what the value represents.
 
-> 🎯 **Golden rule:** Choose variable names that explain the data.
+> **Golden rule:** Choose variable names that explain the data.
 
 ---
-# 6. 🐍 Python Naming Convention: `snake_case`
+# 6. Python Naming Convention: `snake_case`
 
 Python commonly uses **snake_case** for variables.
 
 Words are written in lowercase and separated by underscores.
 
-### ✅ Recommended
+### Recommended
 
 ```python
 student_name = "Rahul"
@@ -346,7 +346,7 @@ account_balance = 5000
 phone_number = "9876543210"
 ```
 
-### ❌ Avoid these styles for normal Python variables
+### Avoid these styles for normal Python variables
 
 ```python
 studentName
@@ -362,7 +362,7 @@ student_name
 ```
 
 ---
-# 7. 📊 Variable Naming Rules — Quick Reference
+# 7. Variable Naming Rules — Quick Reference
 
 | Rule | Example | Valid? |
 |---|---|:---:|
@@ -378,7 +378,7 @@ student_name
 | Case-sensitive | `age` vs `Age` | ✅ Different |
 
 ---
-# 8. 📝 Practice — Valid or Invalid?
+# 8. Practice — Valid or Invalid?
 
 > **Try these yourself before checking the answer key.**
 
@@ -415,7 +415,7 @@ Fill in:
 | `calss@name` | ? | ? |
 
 ---
-# 9. ✅ Practice Answer Key
+# 9. Practice Answer Key
 
 Check only after attempting the exercise.
 

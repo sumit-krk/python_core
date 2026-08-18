@@ -1,4 +1,4 @@
-# 1. 🗃️ Variables Can Store Different Types of Data
+# 1. Variables Can Store Different Types of Data
 
 | Type | Example | Used for |
 |---|---|---|
@@ -17,7 +17,7 @@ name = "Rahul"
 is_student = True
 result = None
 ```
-# 2. 🐍 Python Is Dynamically Typed
+# 2. Python Is Dynamically Typed
 
 Python does not require us to declare the type separately.
 
@@ -50,11 +50,11 @@ Output:
 <class 'str'>
 ```
 
-> 🎯 **Dynamic typing:** Python determines the type of the value at runtime.
+> **Dynamic typing:** Python determines the type of the value at runtime.
 
 ---
 
-## 🔍 Checking the Type
+## Checking the Type
 
 Use `type()`:
 
