@@ -43,7 +43,7 @@ This is one reason Python is popular among beginners as well as professional dev
 
 ---
 
-## 3. Is Python Strongly Typed?
+## 3. Is Python Strongly Typed? (We will discuss this in detail after completing Operators.)
 
 Yes, Python is a **strongly typed language**.
 
