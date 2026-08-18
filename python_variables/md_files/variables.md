@@ -113,7 +113,7 @@ Read it as:
 
 Python has specific rules for variable names.
 
-## Rule 1 — Letters Are Allowed ✅
+## Rule 1 — Letters Are Allowed
 
 ```python
 name = "Rahul"
@@ -123,9 +123,9 @@ city = "Patna"
 
 ---
 
-## Rule 2 — Numbers Are Allowed, But Not at the Beginning ⚠️
+## Rule 2 — Numbers Are Allowed, But Not at the Beginning
 
-### ✅ Valid
+### Valid
 
 ```python
 student1 = "Rahul"
@@ -150,7 +150,7 @@ student1   ✅
 
 ---
 
-## Rule 3 — Underscore `_` Is Allowed ✅
+## Rule 3 — Underscore `_` Is Allowed
 
 ```python
 _student = "Rahul"
@@ -160,7 +160,7 @@ student_name_1 = "Rahul"
 
 ---
 
-## Rule 4 — Spaces Are NOT Allowed ❌
+## Rule 4 — Spaces Are NOT Allowed
 
 Invalid:
 
@@ -181,7 +181,7 @@ student_name   ✅
 
 ---
 
-## Rule 5 — Special Characters Are NOT Allowed ❌
+## Rule 5 — Special Characters Are NOT Allowed
 
 Avoid:
 
@@ -205,11 +205,11 @@ marks = 75
 student_name = "Rahul"
 ```
 
-> ⚠️ **Exception:** `_` is allowed.
+> **Exception:** `_` is allowed.
 
 ---
 
-## Rule 6 — Python Keywords Cannot Be Used ❌
+## Rule 6 — Python Keywords Cannot Be Used
 
 Python has reserved words called **keywords**:
 
@@ -433,7 +433,7 @@ Check only after attempting the exercise.
 | `age@` | ❌ | `@` is not allowed |
 | `calss@name` | ❌ | `@` is not allowed |
 
-### ⭐ Important observation
+### Important observation
 
 ```python
 class_name = "Section 4B"
@@ -454,7 +454,7 @@ So:
 > A keyword can appear as part of a larger variable name, but the complete variable name cannot be a keyword.
 
 ---
-# 10. 🎯 Practice — Create Variable Names
+# 10. Practice — Create Variable Names
 
 Convert these descriptions into proper Python variable names.
 

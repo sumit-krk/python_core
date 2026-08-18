@@ -37,7 +37,7 @@ Here:
 | Logical | Combine conditions | `and or not` |
 | Membership | Check if a value exists | `in`, `not in` |
 
-> ⭐ Today: **Arithmetic Operators**
+> Today: **Arithmetic Operators**
 
 ---
 
@@ -57,7 +57,7 @@ Arithmetic operators are used for mathematical calculations.
 
 ---
 
-# 4. ➕ Addition `+`
+# 4. Addition `+`
 
 Adds two values.
 
@@ -74,13 +74,13 @@ Output:
 15
 ```
 
-### 🎤 Capsule
+### Capsule
 
 > `+` → **Add**
 
 ---
 
-# 5. ➖ Subtraction `-`
+# 5. Subtraction `-`
 
 Subtracts one value from another.
 
@@ -100,7 +100,7 @@ Output:
 
 ---
 
-# 6. ✖️ Multiplication `*`
+# 6. Multiplication `*`
 
 Multiplies values.
 
@@ -125,7 +125,7 @@ Output:
 
 ---
 
-# 7. ➗ Division `/`
+# 7. Division `/`
 
 Performs normal division.
 
@@ -155,7 +155,7 @@ not:
 2
 ```
 
-### 🎤 Capsule
+### Capsule
 
 > `/` → **Normal Division**
 
@@ -290,7 +290,7 @@ Why?
 
 > Floor division moves toward **negative infinity**.
 
-### 🎤 Capsule
+### Capsule
 
 > `//` → **Floor / lower value**
 
@@ -409,7 +409,7 @@ Output:
 +  -
 ```
 
-### 🎤 Capsule
+### Capsule
 
 > **Bracket → Power → Multiply/Divide → Add/Subtract**
 
@@ -454,7 +454,7 @@ Strings → + means Concatenation
 
 ---
 
-# 15. 📝 Practice — Predict the Output
+# 15. Practice — Predict the Output
 
 **Try first. Don't run the code immediately.**
 
