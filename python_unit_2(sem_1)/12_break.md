@@ -1,0 +1,1892 @@
+# 2.12 Break
+
+## Objective
+
+After completing this topic, you should be able to understand and use:
+
+- Purpose of `break`
+- Early termination
+- Conditional loop termination
+
+> **Prerequisite:** You should understand variables, arithmetic operators, comparison operators, logical operators, `if` / `else`, `for` loops, `while` loops, `range()`, strings, and basic loop problem solving.
+
+---
+
+# 1. What Is `break`?
+
+`break` is a Python statement used inside a loop to **stop the loop immediately**.
+
+Normally, a loop continues until its normal condition or sequence finishes.
+
+But sometimes we want to stop the loop earlier when a particular situation occurs.
+
+That is where `break` is useful.
+
+Basic idea:
+
+```text
+Loop starts
+   ↓
+Repeat
+   ↓
+Special condition?
+  /      \
+No       Yes
+ |        |
+Continue  break
+          ↓
+       Loop ends
+```
+
+The important point is:
+
+> **When Python executes `break`, it immediately exits the nearest loop containing it.**
+
+---
+
+# 2. Why Do We Need `break`?
+
+Consider a program that searches for a particular number.
+
+Suppose we have:
+
+```python
+for i in range(1, 11):
+    print(i)
+```
+
+The loop prints all values from `1` to `10`.
+
+But suppose we want to stop as soon as we reach `5`.
+
+We can write:
+
+```python
+for i in range(1, 11):
+    print(i)
+
+    if i == 5:
+        break
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+The loop does not continue to:
+
+```text
+6
+7
+8
+9
+10
+```
+
+because `break` terminates it when `i` becomes `5`.
+
+---
+
+# 3. Basic Syntax
+
+The basic syntax is:
+
+```python
+break
+```
+
+It is normally used inside a loop.
+
+For example:
+
+```python
+for i in range(10):
+    if i == 5:
+        break
+
+    print(i)
+```
+
+Output:
+
+```text
+0
+1
+2
+3
+4
+```
+
+Here, when:
+
+```python
+i == 5
+```
+
+becomes `True`, Python executes:
+
+```python
+break
+```
+
+and leaves the loop.
+
+---
+
+# 4. `break` Must Be Inside a Loop
+
+`break` is used to terminate a loop.
+
+For example:
+
+```python
+for i in range(5):
+    print(i)
+    break
+```
+
+This is valid.
+
+But `break` cannot normally be used by itself outside a loop.
+
+The main purpose of `break` is:
+
+> **Exit the current loop immediately.**
+
+---
+
+# 5. Normal Loop Completion vs Early Termination
+
+Consider:
+
+```python
+for i in range(1, 6):
+    print(i)
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+The loop finishes normally because the range has no more values.
+
+Now consider:
+
+```python
+for i in range(1, 6):
+    print(i)
+
+    if i == 3:
+        break
+```
+
+Output:
+
+```text
+1
+2
+3
+```
+
+This time the loop does **not** finish its normal sequence.
+
+It stops early because:
+
+```python
+break
+```
+
+was executed.
+
+Therefore:
+
+### Normal termination
+
+The loop reaches its natural end.
+
+### Early termination
+
+The loop is stopped before its natural end using `break`.
+
+---
+
+# 6. First Example: Stop at a Specific Number
+
+```python
+for i in range(1, 11):
+
+    if i == 6:
+        break
+
+    print(i)
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+Notice that `6` is not printed.
+
+Why?
+
+When:
+
+```text
+i = 6
+```
+
+the condition:
+
+```python
+i == 6
+```
+
+becomes `True`.
+
+Then:
+
+```python
+break
+```
+
+runs immediately.
+
+---
+
+# 7. If `print()` Comes Before `break`
+
+Consider:
+
+```python
+for i in range(1, 11):
+    print(i)
+
+    if i == 6:
+        break
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+6
+```
+
+Now `6` is printed.
+
+Why?
+
+Because Python executes statements from top to bottom.
+
+For:
+
+```text
+i = 6
+```
+
+the order is:
+
+```text
+print(6)
+   ↓
+check i == 6
+   ↓
+break
+```
+
+So the position of `break` matters.
+
+---
+
+# 8. Dry Run
+
+Consider:
+
+```python
+for i in range(1, 6):
+
+    if i == 3:
+        break
+
+    print(i)
+```
+
+### Iteration 1
+
+```text
+i = 1
+1 == 3 → False
+print 1
+```
+
+### Iteration 2
+
+```text
+i = 2
+2 == 3 → False
+print 2
+```
+
+### Iteration 3
+
+```text
+i = 3
+3 == 3 → True
+break
+```
+
+The loop ends immediately.
+
+Output:
+
+```text
+1
+2
+```
+
+---
+
+# 9. Conditional Loop Termination
+
+The most common use of `break` is with an `if` statement.
+
+Pattern:
+
+```python
+for ...:
+
+    if condition:
+        break
+```
+
+This means:
+
+> Continue the loop normally until the condition becomes `True`. When it becomes `True`, stop the loop.
+
+Example:
+
+```python
+for i in range(1, 11):
+
+    if i > 5:
+        break
+
+    print(i)
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+---
+
+# 10. `break` with `while`
+
+`break` is not limited to `for` loops.
+
+It can also be used with `while`.
+
+Example:
+
+```python
+i = 1
+
+while i <= 10:
+
+    if i == 6:
+        break
+
+    print(i)
+    i = i + 1
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+When `i` becomes `6`, the loop terminates.
+
+---
+
+# 11. Why Is `break` Useful with `while`?
+
+Sometimes a `while` loop has a normal condition, but there is an additional situation in which we want to stop.
+
+Example:
+
+```python
+i = 1
+
+while i <= 10:
+
+    if i == 5:
+        break
+
+    print(i)
+    i = i + 1
+```
+
+The normal loop condition is:
+
+```python
+i <= 10
+```
+
+But we also have an early stopping condition:
+
+```python
+i == 5
+```
+
+So the loop can stop for two reasons:
+
+```text
+Normal stop → i becomes greater than 10
+Early stop  → i becomes 5
+```
+
+In this example, the early stop happens first.
+
+---
+
+# 12. `break` in an Input-Controlled Loop
+
+`break` is particularly useful when we want to stop taking input when a particular value is entered.
+
+Example:
+
+```python
+while True:
+    number = int(input("Enter a number: "))
+
+    if number == 0:
+        break
+
+    print("You entered:", number)
+```
+
+The important new idea here is:
+
+```python
+while True:
+```
+
+The condition is `True`, so the loop itself does not naturally become false.
+
+Instead, `break` provides the stopping point.
+
+Input:
+
+```text
+5
+8
+3
+0
+```
+
+Output:
+
+```text
+You entered: 5
+You entered: 8
+You entered: 3
+```
+
+When `0` is entered:
+
+```python
+if number == 0:
+    break
+```
+
+stops the loop.
+
+> **Important:** `while True` and `break` are introduced here only to demonstrate a common use of `break`: the loop intentionally continues until a condition inside it calls `break`.
+
+---
+
+# 13. Input-Controlled Sum with `break`
+
+We can calculate a sum until the user enters `0`.
+
+```python
+total = 0
+
+while True:
+    number = int(input("Enter number: "))
+
+    if number == 0:
+        break
+
+    total = total + number
+
+print("Sum:", total)
+```
+
+Input:
+
+```text
+10
+20
+5
+0
+```
+
+Output:
+
+```text
+Sum: 35
+```
+
+The `0` is the stopping value and is not added.
+
+---
+
+# 14. Input-Controlled Count with `break`
+
+```python
+count = 0
+
+while True:
+    number = int(input("Enter number: "))
+
+    if number == 0:
+        break
+
+    count = count + 1
+
+print("Count:", count)
+```
+
+Input:
+
+```text
+7
+4
+9
+2
+0
+```
+
+Output:
+
+```text
+Count: 4
+```
+
+---
+
+# 15. Stop When a Negative Number Is Entered
+
+Suppose we want to keep accepting positive numbers but stop when the user enters a negative number.
+
+```python
+while True:
+    number = int(input("Enter number: "))
+
+    if number < 0:
+        break
+
+    print("Accepted:", number)
+```
+
+Input:
+
+```text
+5
+8
+12
+-3
+```
+
+The program processes:
+
+```text
+5
+8
+12
+```
+
+and stops at:
+
+```text
+-3
+```
+
+---
+
+# 16. Stop When a Specific Value Is Found
+
+Suppose we are checking numbers from `1` to `20` and want to stop when we find `13`.
+
+```python
+for i in range(1, 21):
+
+    if i == 13:
+        print("Found:", i)
+        break
+```
+
+Output:
+
+```text
+Found: 13
+```
+
+This demonstrates an important use of `break`:
+
+> **Stop searching when the required value is found.**
+
+---
+
+# 17. Search Example
+
+Suppose we want to check whether a target number occurs in a range.
+
+```python
+target = 7
+found = False
+
+for i in range(1, 11):
+
+    if i == target:
+        found = True
+        break
+
+if found:
+    print("Found")
+else:
+    print("Not found")
+```
+
+Output:
+
+```text
+Found
+```
+
+The variable:
+
+```python
+found
+```
+
+stores whether the target was found.
+
+The `break` prevents unnecessary iterations after the target has been found.
+
+---
+
+# 18. Why Stop Searching?
+
+Suppose the target is:
+
+```text
+3
+```
+
+and the loop checks:
+
+```text
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+Once `3` is found, checking:
+
+```text
+4
+5
+6
+7
+8
+9
+10
+```
+
+is unnecessary for this particular search.
+
+So:
+
+```python
+break
+```
+
+can make the logic stop as soon as the answer is known.
+
+---
+
+# 19. `break` with a Condition
+
+A very common pattern is:
+
+```python
+for i in range(...):
+
+    if some_condition:
+        break
+```
+
+Think of it as:
+
+```text
+Keep going
+   ↓
+Check special condition
+   ↓
+False → continue
+True  → stop
+```
+
+Example:
+
+```python
+for i in range(1, 101):
+
+    if i * i > 50:
+        break
+
+    print(i)
+```
+
+The loop stops when the square becomes greater than `50`.
+
+---
+
+# 20. `break` Does Not End the Entire Program
+
+This is important.
+
+Consider:
+
+```python
+for i in range(1, 10):
+
+    if i == 5:
+        break
+
+    print(i)
+
+print("Program continues")
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+Program continues
+```
+
+`break` stops the **loop**, not the entire program.
+
+The statement after the loop still executes.
+
+---
+
+# 21. `break` Only Affects the Nearest Loop
+
+Consider nested loops:
+
+```python
+for i in range(3):
+
+    for j in range(5):
+
+        if j == 2:
+            break
+
+        print(i, j)
+```
+
+The `break` belongs to the inner loop.
+
+Therefore, it stops the inner loop only.
+
+The outer loop continues.
+
+Output:
+
+```text
+0 0
+0 1
+1 0
+1 1
+2 0
+2 1
+```
+
+---
+
+# 22. Nested Loop Execution with `break`
+
+Consider:
+
+```python
+for row in range(3):
+
+    for column in range(5):
+
+        if column == 2:
+            break
+
+        print("*", end="")
+
+    print()
+```
+
+Output:
+
+```text
+**
+**
+**
+```
+
+For every row:
+
+```text
+column = 0 → print *
+column = 1 → print *
+column = 2 → break
+```
+
+The inner loop stops at `column = 2`.
+
+Then the outer loop moves to the next row.
+
+---
+
+# 23. Important Nested Loop Rule
+
+Remember:
+
+> **`break` exits the nearest enclosing loop in which it appears.**
+
+In:
+
+```python
+for i in range(3):
+
+    for j in range(5):
+
+        if j == 2:
+            break
+```
+
+the nearest loop is:
+
+```python
+for j in range(5):
+```
+
+So that is the loop that terminates.
+
+The outer:
+
+```python
+for i in range(3):
+```
+
+continues.
+
+---
+
+# 24. `break` vs Normal Loop Condition
+
+Sometimes we can solve a problem without `break`.
+
+For example:
+
+```python
+i = 1
+
+while i <= 5:
+    print(i)
+    i = i + 1
+```
+
+There is no need for `break`.
+
+But if there is a special stopping condition:
+
+```python
+i = 1
+
+while i <= 10:
+
+    if i == 5:
+        break
+
+    print(i)
+    i = i + 1
+```
+
+`break` gives us a separate early-termination condition.
+
+A useful rule is:
+
+> **Use the normal loop condition when the stopping rule naturally describes the loop. Use `break` when an additional event should stop the loop early.**
+
+---
+
+# 25. Common Beginner Mistake: `break` Without a Condition
+
+Consider:
+
+```python
+for i in range(10):
+    break
+    print(i)
+```
+
+The loop stops immediately on its first iteration.
+
+The output is nothing.
+
+If you want conditional termination, use:
+
+```python
+for i in range(10):
+
+    if i == 5:
+        break
+
+    print(i)
+```
+
+---
+
+# 26. Common Beginner Mistake: Putting `break` Before Required Work
+
+Compare:
+
+```python
+for i in range(1, 6):
+
+    if i == 5:
+        break
+
+    print(i)
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+```
+
+with:
+
+```python
+for i in range(1, 6):
+
+    print(i)
+
+    if i == 5:
+        break
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+5
+```
+
+The position of `break` changes the output.
+
+---
+
+# 27. Common Beginner Mistake: Thinking `break` Means `if`
+
+`if` and `break` have different jobs.
+
+`if`:
+
+> Checks a condition.
+
+`break`:
+
+> Stops the nearest loop.
+
+Example:
+
+```python
+if number == 0:
+    break
+```
+
+The `if` decides whether the condition is true.
+
+The `break` decides what happens after the condition is true.
+
+---
+
+# 28. Common Beginner Mistake: Thinking `break` Skips One Iteration
+
+`break` does **not** mean:
+
+> Skip this iteration.
+
+It means:
+
+> **Stop the entire nearest loop.**
+
+For example:
+
+```python
+for i in range(1, 6):
+
+    if i == 3:
+        break
+
+    print(i)
+```
+
+The loop does not continue with:
+
+```text
+4
+5
+```
+
+It ends completely.
+
+---
+
+# 29. Common Beginner Mistake: Confusing `break` with Normal Completion
+
+Example:
+
+```python
+for i in range(1, 6):
+    print(i)
+```
+
+The loop naturally finishes after `5`.
+
+But:
+
+```python
+for i in range(1, 6):
+
+    if i == 3:
+        break
+
+    print(i)
+```
+
+finishes early.
+
+These are different execution paths.
+
+---
+
+# 30. Dry-Run Method for `break`
+
+When solving a `break` problem, use this checklist:
+
+1. What values can the loop produce?
+2. What condition triggers `break`?
+3. Is the `break` checked before or after other statements?
+4. What is printed or calculated before `break`?
+5. Which loop contains the `break`?
+6. When exactly does the loop terminate?
+7. Does any code after the loop still execute?
+
+Example:
+
+```python
+for i in range(1, 8):
+
+    if i == 4:
+        break
+
+    print(i)
+
+print("Done")
+```
+
+Dry run:
+
+```text
+i = 1 → condition false → print 1
+i = 2 → condition false → print 2
+i = 3 → condition false → print 3
+i = 4 → condition true → break
+loop ends
+print "Done"
+```
+
+Output:
+
+```text
+1
+2
+3
+Done
+```
+
+---
+
+# 31. `break` with Number Problems
+
+`break` can be useful when we want to stop checking after a condition is satisfied.
+
+For example, to find the first divisor of a number other than `1`:
+
+```python
+number = 15
+i = 2
+
+while i < number:
+
+    if number % i == 0:
+        print("Divisor found:", i)
+        break
+
+    i = i + 1
+```
+
+Output:
+
+```text
+Divisor found: 3
+```
+
+Once a divisor is found, there is no need to keep searching for the **first** divisor.
+
+---
+
+# 32. Finding the First Number That Satisfies a Condition
+
+Suppose we want the first number between `1` and `100` divisible by `7`.
+
+```python
+for i in range(1, 101):
+
+    if i % 7 == 0:
+        print("First multiple:", i)
+        break
+```
+
+Output:
+
+```text
+First multiple: 7
+```
+
+The loop stops immediately after finding the first matching value.
+
+---
+
+# 33. Early Termination in Input Validation
+
+Suppose we want to allow at most `5` attempts to enter a positive number.
+
+```python
+attempt = 1
+
+while attempt <= 5:
+
+    number = int(input("Enter a positive number: "))
+
+    if number > 0:
+        print("Accepted")
+        break
+
+    print("Try again")
+    attempt = attempt + 1
+```
+
+Here, there are two possible ways to leave the loop:
+
+```text
+Valid input → break
+5 attempts completed → normal loop termination
+```
+
+This is a useful example of combining a normal loop condition with early termination.
+
+---
+
+# 34. Two Possible Ways to Terminate a Loop
+
+A loop can have:
+
+### Normal termination
+
+The loop condition becomes false.
+
+### Early termination
+
+A condition inside the loop executes:
+
+```python
+break
+```
+
+Example:
+
+```python
+attempt = 1
+
+while attempt <= 5:
+
+    number = int(input("Enter positive number: "))
+
+    if number > 0:
+        break
+
+    attempt = attempt + 1
+```
+
+Possible outcomes:
+
+```text
+Valid number entered → break
+No valid number in 5 attempts → condition becomes false
+```
+
+---
+
+# 35. When Should You Use `break`?
+
+`break` is useful when:
+
+- You find the value you were searching for.
+- A special input means "stop".
+- A valid input has been received.
+- A certain condition makes further iterations unnecessary.
+- You want to stop a loop before its normal endpoint.
+- A nested loop needs to stop independently.
+
+Examples:
+
+```python
+if number == 0:
+    break
+```
+
+```python
+if found:
+    break
+```
+
+```python
+if number < 0:
+    break
+```
+
+---
+
+# 36. When Is `break` Not Necessary?
+
+Do not use `break` just because a loop can be written with it.
+
+For example, this is simple:
+
+```python
+i = 1
+
+while i <= 10:
+    print(i)
+    i = i + 1
+```
+
+There is no need to write:
+
+```python
+while True:
+
+    if i > 10:
+        break
+```
+
+The first version clearly expresses the loop's natural condition.
+
+Use `break` when it makes the early stopping rule clearer or is genuinely useful.
+
+---
+
+# 37. Important Difference: `break` Stops, It Does Not Reset
+
+Consider:
+
+```python
+for i in range(1, 6):
+
+    if i == 3:
+        break
+
+    print(i)
+```
+
+After `break`:
+
+```text
+the loop is finished
+```
+
+Python does not restart the loop from:
+
+```text
+1
+```
+
+and it does not continue from:
+
+```text
+4
+```
+
+The loop simply ends.
+
+---
+
+# 38. Key Patterns to Remember
+
+### Stop when a value is reached
+
+```python
+for i in range(1, 11):
+
+    if i == 5:
+        break
+
+    print(i)
+```
+
+### Stop when input is `0`
+
+```python
+while True:
+    number = int(input("Enter number: "))
+
+    if number == 0:
+        break
+
+    print(number)
+```
+
+### Stop when a negative number is entered
+
+```python
+while True:
+    number = int(input("Enter number: "))
+
+    if number < 0:
+        break
+```
+
+### Stop after finding a value
+
+```python
+for i in range(1, 101):
+
+    if i == target:
+        break
+```
+
+### Stop an inner nested loop
+
+```python
+for row in range(3):
+
+    for column in range(5):
+
+        if column == 2:
+            break
+```
+
+---
+
+# 39. Key Points to Remember
+
+1. `break` is used inside a loop.
+2. It immediately terminates the nearest enclosing loop.
+3. It is commonly used with `if`.
+4. `break` provides early termination.
+5. The loop does not continue after `break`.
+6. Statements after the loop can still execute.
+7. The position of `break` affects the output.
+8. `break` can be used with both `for` and `while`.
+9. `break` is useful for search problems.
+10. `break` is useful when a special input should stop a loop.
+11. `break` is useful when an answer has already been found.
+12. In nested loops, `break` stops only the nearest loop.
+13. `break` does not skip one iteration; it ends the loop.
+14. `if` checks the condition; `break` terminates the loop.
+15. A normal loop condition and `break` can provide two different termination paths.
+16. Do not use `break` unnecessarily when a simple loop condition already expresses the problem clearly.
+17. Always identify exactly which loop contains the `break`.
+18. During a dry run, identify the exact iteration on which `break` executes.
+19. `break` does not terminate the entire Python program.
+20. The main idea is simple: **condition becomes true → `break` executes → nearest loop ends.**
+
+---
+
+# Practice Problems
+
+> **Note:** Solve these problems using concepts covered so far: variables, arithmetic, comparisons, logical operators, `if` / `else`, `for`, `while`, `range()`, strings, and `break`. Do not use `continue`, lists, tuples, dictionaries, functions, recursion, comprehensions, classes, or exception handling.
+
+## A. Basic Understanding of `break`
+
+### 1.
+Write a `for` loop from `1` to `10` and stop it when the value becomes `5`.
+
+### 2.
+Write a `for` loop from `1` to `20` and stop when the value becomes `8`.
+
+### 3.
+Print numbers from `1` to `10`, but stop before printing `6`.
+
+### 4.
+Print numbers from `1` to `10`, including `6`, and then stop.
+
+### 5.
+Write a program that prints numbers from `10` down to `1` and stops when the number becomes `5`.
+
+### 6.
+Print even numbers from `2` to `20` and stop when the number becomes `12`.
+
+### 7.
+Print odd numbers from `1` to `19` and stop when the number becomes `11`.
+
+### 8.
+Print multiples of `3` up to `30` and stop when the value reaches `18`.
+
+### 9.
+Predict the output:
+
+```python
+for i in range(1, 8):
+    if i == 4:
+        break
+    print(i)
+```
+
+### 10.
+Predict the output:
+
+```python
+for i in range(1, 8):
+    print(i)
+    if i == 4:
+        break
+```
+
+---
+
+## B. `break` with `while`
+
+### 11.
+Write a `while` loop that counts from `1` to `10` but stops at `6`.
+
+### 12.
+Write a `while` loop that counts backward from `10` to `1` and stops at `4`.
+
+### 13.
+Write a `while` loop that prints even numbers from `2` to `20` and stops at `14`.
+
+### 14.
+Write a `while` loop that prints odd numbers from `1` to `19` and stops at `13`.
+
+### 15.
+Predict the output:
+
+```python
+i = 1
+
+while i <= 10:
+    if i == 5:
+        break
+
+    print(i)
+    i = i + 1
+```
+
+### 16.
+Predict the output:
+
+```python
+i = 1
+
+while i <= 10:
+    print(i)
+
+    if i == 5:
+        break
+
+    i = i + 1
+```
+
+---
+
+## C. Conditional Loop Termination
+
+### 17.
+Print numbers from `1` to `100` and stop when the number is divisible by `13`.
+
+### 18.
+Print numbers from `1` to `100` and stop at the first number divisible by `17`.
+
+### 19.
+Print numbers from `1` to `100` and stop at the first number whose square is greater than `500`.
+
+### 20.
+Print numbers from `1` to `50` and stop when the sum of the numbers printed so far becomes greater than `100`.
+
+### 21.
+Start from `1` and keep increasing the number by `2`. Stop when the number becomes greater than `20`.
+
+### 22.
+Start from `100` and decrease by `5`. Stop when the value becomes less than `50`.
+
+---
+
+## D. Input-Controlled `break`
+
+### 23.
+Keep asking the user for numbers until the user enters `0`. Print every number entered before `0`.
+
+### 24.
+Keep asking for numbers until `0` is entered and calculate their sum.
+
+### 25.
+Keep asking for numbers until `0` is entered and count how many numbers were entered.
+
+### 26.
+Keep asking for numbers until a negative number is entered. Print each non-negative number.
+
+### 27.
+Keep asking for numbers until a negative number is entered and calculate the sum of all non-negative numbers.
+
+### 28.
+Keep asking for a positive number until the user enters one. Stop immediately when a positive number is entered.
+
+### 29.
+Allow the user to enter at most `5` numbers. Stop early if the user enters `0`.
+
+### 30.
+Allow at most `5` attempts to enter a positive number. Stop immediately when a valid positive number is entered.
+
+---
+
+## E. Search Problems
+
+### 31.
+Search for the number `7` in the range `1` to `20`. Use `break` when it is found.
+
+### 32.
+Take a target number from the user and search for it from `1` to `100`. Stop when the target is found.
+
+### 33.
+Find the first number between `1` and `100` that is divisible by both `3` and `5`.
+
+### 34.
+Find the first even number greater than `20`.
+
+### 35.
+Find the first number between `1` and `100` whose square is greater than `1000`.
+
+### 36.
+Find the first divisor of a number other than `1`. Stop as soon as a divisor is found.
+
+### 37.
+Use `break` to determine whether a number is prime by searching for a divisor.
+
+---
+
+## F. Number Problems with `break`
+
+### 38.
+Take a number and process its digits using a `while` loop. Stop when a digit `0` is found.
+
+### 39.
+Take a number and print its digits from right to left. Stop when the digit `5` is found.
+
+### 40.
+Take a number and find its first digit from the right that is even. Stop once it is found.
+
+### 41.
+Take a number and find the first digit from the right that is greater than `5`.
+
+### 42.
+Take a number and check whether it contains the digit `7`. Stop processing as soon as `7` is found.
+
+### 43.
+Take a number and check whether it contains any `0`. Stop as soon as `0` is found.
+
+### 44.
+Take a number and stop digit processing when the remaining number becomes smaller than `10`.
+
+### 45.
+Find the first factor of a number greater than `1` using `break`.
+
+---
+
+## G. Nested Loops with `break`
+
+### 46.
+Use nested `for` loops to print:
+
+```text
+****
+****
+****
+```
+
+but use `break` so that the inner loop stops after printing two stars in each row.
+
+### 47.
+Use nested `for` loops to print numbers from `1` onward in each row, but stop the inner loop when the number reaches `3`.
+
+### 48.
+Use nested `while` loops to print three rows. In every row, stop the inner loop after four iterations.
+
+### 49.
+Predict the output:
+
+```python
+for i in range(3):
+    for j in range(5):
+        if j == 2:
+            break
+        print(i, j)
+```
+
+### 50.
+Explain why the outer loop continues in the previous problem even though `break` is executed.
+
+---
+
+## H. Debugging Problems
+
+### 51.
+Find and correct the problem:
+
+```python
+for i in range(1, 10):
+    break
+    if i == 5:
+        print(i)
+```
+
+### 52.
+Find and correct the problem:
+
+```python
+for i in range(1, 10):
+    if i == 5:
+        break
+        print(i)
+```
+
+### 53.
+Explain the difference between:
+
+```python
+if i == 5:
+    break
+
+print(i)
+```
+
+and:
+
+```python
+print(i)
+
+if i == 5:
+    break
+```
+
+### 54.
+Identify which loop is stopped:
+
+```python
+for i in range(3):
+    for j in range(5):
+        if j == 2:
+            break
+        print(j)
+```
+
+### 55.
+Rewrite this program so that the loop stops only when `number == 0`:
+
+```python
+number = int(input("Enter number: "))
+
+while True:
+    print(number)
+```
+
+---
+
+# Final Challenge 1: Search with Early Termination
+
+Take two numbers:
+
+```text
+start
+end
+```
+
+Search from `start` to `end` and find the **first number divisible by both `3` and `5`**.
+
+As soon as you find it:
+
+```python
+break
+```
+
+the loop.
+
+If no such number is found, display an appropriate message.
+
+### Think Before Coding
+
+Ask:
+
+1. What is the search range?
+2. What condition identifies the required number?
+3. When should `break` execute?
+4. What should happen if the value is never found?
+
+---
+
+# Final Challenge 2: Input-Controlled Analyzer
+
+Keep asking the user for numbers.
+
+Stop immediately when:
+
+```text
+0
+```
+
+is entered.
+
+Before stopping, calculate:
+
+```text
+Count of numbers
+Sum
+Count of even numbers
+Count of odd numbers
+```
+
+The terminating `0` should not be counted as a normal input.
+
+---
+
+# Final Challenge 3: Limited Attempts
+
+Give the user at most `5` attempts to enter a positive number.
+
+Rules:
+
+- If the user enters a positive number, print `"Accepted"` and stop immediately using `break`.
+- If the user enters a non-positive number, allow another attempt.
+- After `5` unsuccessful attempts, the loop should end normally.
+
+This challenge demonstrates the difference between:
+
+```text
+Early termination → break
+Normal termination → loop condition becomes false
+```
+
+---
+
+# Final Revision
+
+Before moving to the next topic, make sure you can explain:
+
+```python
+for i in range(1, 11):
+
+    if i == 6:
+        break
+
+    print(i)
+```
+
+You should be able to answer:
+
+1. What values does the loop normally have?
+2. When is the condition checked?
+3. What happens when `i == 6`?
+4. Is `6` printed?
+5. Why does the loop stop?
+6. Does the entire program stop?
+7. What happens to code written after the loop?
+
+Also understand this pattern:
+
+```python
+while True:
+    value = int(input("Enter value: "))
+
+    if value == 0:
+        break
+
+    # process value
+```
+
+The core idea is:
+
+> **`break` provides a way to leave the nearest loop immediately when a particular condition is satisfied.**
