@@ -234,6 +234,93 @@ The important idea is:
 
 > **Python source code is processed by Python, and the resulting instructions are executed by the Python runtime environment.**
 
+### Easy Way to Remember the Execution Flow
+
+For a beginner, remember the four main terms like this:
+
+| Term | Easy Meaning |
+|---|---|
+| **Source Code** | Python code written by the programmer |
+| **Bytecode** | Intermediate instructions generated from Python source code |
+| **PVM (Python Virtual Machine)** | The Python runtime component that executes bytecode |
+| **Execution** | The actual running of the instructions |
+
+So the simplified flow is:
+
+```text
+Python Source Code
+        ↓
+     Bytecode
+        ↓
+Python Virtual Machine (PVM)
+        ↓
+     Execution
+        ↓
+      Result
+```
+
+> **Memory Trick:**  
+> **We WRITE source code → Python CREATES bytecode → PVM RUNS it → We GET the result.**
+
+```text
+WRITE → CREATE → RUN → RESULT
+  ↓        ↓       ↓       ↓
+Source → Bytecode → PVM → Output
+```
+
+### Real-Life Example: Giving Instructions
+
+Imagine you tell a friend:
+
+> **"Open the door."**
+
+Your friend understands your instruction and performs the action.
+
+Now imagine that your friend cannot directly work with the way you expressed the instruction. The instruction first needs to be converted into a form that your friend can follow, and then the friend performs it.
+
+Think of the Python process in a similar way:
+
+```text
+Instruction written by us
+          ↓
+   Converted into
+   intermediate instructions
+          ↓
+       PVM reads
+     those instructions
+          ↓
+       Instructions
+       are executed
+          ↓
+         Result
+```
+
+For example, if we write:
+
+```python
+x = 10
+y = 20
+print(x + y)
+```
+
+Conceptually:
+
+```text
+Source Code
+    ↓
+Bytecode
+    ↓
+PVM
+    ↓
+Execute the instructions
+    ↓
+30
+```
+
+You do not need to understand or memorize the actual bytecode instructions at this stage. The important idea is:
+
+> **We write Python source code, Python prepares it as bytecode, the PVM executes that bytecode, and we finally get the result.**
+
 ### Why Is This Important?
 
 Understanding the execution model helps explain why Python programs can be written in a readable form while still being executed by the computer.
