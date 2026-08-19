@@ -1,0 +1,1553 @@
+# 2.5 Strings
+
+## Objective
+
+After completing this topic, you should be able to understand:
+
+- What is a string?
+- How to create strings
+- String indexing
+- String slicing
+- Finding the length of a string
+- String concatenation
+- String repetition
+- Basic string methods
+- Case conversion
+- Searching inside strings
+- Replacing text in strings
+
+> **Prerequisite:** You should understand basic Python syntax, variables, and simple values. This topic focuses only on strings and the operations introduced here.
+
+---
+
+## 1. What Is a String?
+
+A **string** is a sequence of characters used to represent text.
+
+Characters can include:
+
+- Letters
+- Numbers
+- Spaces
+- Special characters
+
+For example:
+
+```python
+name = "Rahul"
+city = "Patna"
+message = "Hello Python"
+```
+
+Here, `"Rahul"`, `"Patna"`, and `"Hello Python"` are strings.
+
+### Important Point
+
+A number written inside quotation marks is treated as text.
+
+For example:
+
+```python
+age = 18
+age_text = "18"
+```
+
+Here:
+
+- `18` is a numeric value.
+- `"18"` is a string containing the character `1` followed by the character `8`.
+
+---
+
+# 2. Creating Strings
+
+Strings can be created using quotation marks.
+
+Python commonly supports:
+
+- Single quotes `' '`
+- Double quotes `" "`
+
+### Using Single Quotes
+
+```python
+name = 'Rahul'
+```
+
+### Using Double Quotes
+
+```python
+name = "Rahul"
+```
+
+Both create a string.
+
+### String With Spaces
+
+```python
+message = "Welcome to Python"
+```
+
+Spaces are also characters in a string.
+
+### Empty String
+
+A string can contain no characters.
+
+```python
+text = ""
+```
+
+This is called an **empty string**.
+
+Its length is zero.
+
+---
+
+## 2.1 Strings Can Contain Numbers
+
+A string can contain digits.
+
+```python
+phone = "9876543210"
+```
+
+Although it contains only digits, `"9876543210"` is still a string because it is enclosed in quotation marks.
+
+---
+
+## 2.2 Strings Can Contain Special Characters
+
+Strings can also contain special characters.
+
+```python
+message = "Hello!"
+symbol = "@"
+text = "Python # Programming"
+```
+
+Here, `!`, `@`, `#`, and spaces are characters inside strings.
+
+---
+
+## 2.3 Using Quotes Inside a String
+
+If a string contains an apostrophe, using double quotes can make the string easier to write.
+
+```python
+message = "Python's syntax is readable."
+```
+
+Similarly, a string containing double quotes can use single quotes around the complete string:
+
+```python
+message = 'He said "Hello".'
+```
+
+The important idea is that the quotation marks used to create the string should be handled correctly.
+
+---
+
+# 3. String Indexing
+
+A string is a sequence of characters.
+
+Each character has a position called an **index**.
+
+Python uses **zero-based indexing**.
+
+This means the first character has index `0`.
+
+Consider:
+
+```python
+text = "Python"
+```
+
+The characters and their indexes are:
+
+| Character | P | y | t | h | o | n |
+|---|---:|---:|---:|---:|---:|---:|
+| Index | 0 | 1 | 2 | 3 | 4 | 5 |
+
+### Accessing a Character
+
+We can access a character using square brackets:
+
+```python
+text = "Python"
+
+print(text[0])
+```
+
+Output:
+
+```text
+P
+```
+
+The character at index `0` is `P`.
+
+Another example:
+
+```python
+print(text[3])
+```
+
+Output:
+
+```text
+h
+```
+
+---
+
+## 3.1 Indexing From the End
+
+Python also allows us to access characters from the end using negative indexes.
+
+For example:
+
+```python
+text = "Python"
+```
+
+The negative indexes are:
+
+| Character | P | y | t | h | o | n |
+|---|---:|---:|---:|---:|---:|---:|
+| Positive index | 0 | 1 | 2 | 3 | 4 | 5 |
+| Negative index | -6 | -5 | -4 | -3 | -2 | -1 |
+
+The last character has index `-1`.
+
+Example:
+
+```python
+print(text[-1])
+```
+
+Output:
+
+```text
+n
+```
+
+### Easy Way to Remember
+
+- From the beginning → starts at `0`
+- From the end → starts at `-1`
+
+---
+
+## 3.2 Indexing a String With Spaces
+
+Spaces also have indexes.
+
+Consider:
+
+```python
+text = "Hi Python"
+```
+
+The space between `Hi` and `Python` is also a character and has its own index.
+
+Therefore, when counting indexes, do not ignore spaces.
+
+---
+
+## 3.3 Index Must Exist
+
+Consider:
+
+```python
+text = "Python"
+```
+
+Valid indexes are:
+
+```text
+0, 1, 2, 3, 4, 5
+```
+
+and:
+
+```text
+-6, -5, -4, -3, -2, -1
+```
+
+Trying to access an index outside this range causes an error.
+
+Example:
+
+```python
+print(text[10])
+```
+
+This produces an `IndexError` because index `10` does not exist in `"Python"`.
+
+---
+
+# 4. String Slicing
+
+**Slicing** is used to extract a part of a string.
+
+The basic syntax is:
+
+```python
+string[start:stop]
+```
+
+The `start` position is included, but the `stop` position is not included.
+
+Consider:
+
+```python
+text = "Python"
+```
+
+Example:
+
+```python
+print(text[0:3])
+```
+
+Output:
+
+```text
+Pyt
+```
+
+Indexes `0`, `1`, and `2` are included.
+
+Index `3` is not included.
+
+### Important Rule
+
+> **Start is included, stop is excluded.**
+
+This rule is extremely important when working with slices.
+
+---
+
+## 4.1 More Slicing Examples
+
+```python
+text = "Python"
+
+print(text[1:4])
+```
+
+Output:
+
+```text
+yth
+```
+
+Why?
+
+- Index `1` → `y`
+- Index `2` → `t`
+- Index `3` → `h`
+- Index `4` → not included
+
+---
+
+## 4.2 Omitting Start
+
+If the start position is omitted, Python starts from the beginning.
+
+```python
+text = "Python"
+
+print(text[:3])
+```
+
+Output:
+
+```text
+Pyt
+```
+
+---
+
+## 4.3 Omitting Stop
+
+If the stop position is omitted, Python continues to the end.
+
+```python
+text = "Python"
+
+print(text[2:])
+```
+
+Output:
+
+```text
+thon
+```
+
+---
+
+## 4.4 Copying a String Using Slicing
+
+We can use:
+
+```python
+text = "Python"
+
+print(text[:])
+```
+
+This represents the complete string.
+
+---
+
+## 4.5 Negative Slicing
+
+Negative indexes can also be used with slicing.
+
+```python
+text = "Python"
+
+print(text[-3:])
+```
+
+Output:
+
+```text
+hon
+```
+
+This takes the last three characters.
+
+---
+
+# 5. String Length
+
+The `len()` function is used to find the number of characters in a string.
+
+Example:
+
+```python
+text = "Python"
+
+print(len(text))
+```
+
+Output:
+
+```text
+6
+```
+
+`"Python"` contains six characters.
+
+### Spaces Count Too
+
+Consider:
+
+```python
+text = "Hi Python"
+
+print(len(text))
+```
+
+The space between `Hi` and `Python` is also counted.
+
+Therefore, the length is:
+
+```text
+9
+```
+
+### Important Point
+
+`len()` counts characters; it does not count words.
+
+For example:
+
+```python
+text = "Hello World"
+```
+
+The length includes:
+
+- Letters
+- Space
+
+---
+
+# 6. String Concatenation
+
+**Concatenation** means joining strings together.
+
+The `+` operator can be used to concatenate strings.
+
+Example:
+
+```python
+first_name = "Rahul"
+last_name = "Kumar"
+
+full_name = first_name + last_name
+
+print(full_name)
+```
+
+Output:
+
+```text
+RahulKumar
+```
+
+Notice that there is no space between the two strings.
+
+---
+
+## 6.1 Adding a Space During Concatenation
+
+If we want a space, we must include it.
+
+```python
+first_name = "Rahul"
+last_name = "Kumar"
+
+full_name = first_name + " " + last_name
+
+print(full_name)
+```
+
+Output:
+
+```text
+Rahul Kumar
+```
+
+### Important Point
+
+The `+` operator joins strings; it does not automatically add spaces.
+
+---
+
+## 6.2 Concatenating Multiple Strings
+
+We can join more than two strings.
+
+```python
+city = "New"
+place = "Delhi"
+
+result = city + " " + place
+
+print(result)
+```
+
+Output:
+
+```text
+New Delhi
+```
+
+---
+
+## 6.3 String and Number Cannot Be Directly Concatenated
+
+Consider:
+
+```python
+age = 18
+message = "Age: " + age
+```
+
+This causes a `TypeError` because one value is a string and the other is an integer.
+
+For now, remember:
+
+> **The `+` operator can concatenate strings with strings.**
+
+We will learn how to convert values between types in the type-conversion topic.
+
+---
+
+# 7. String Repetition
+
+The `*` operator can be used to repeat a string.
+
+Example:
+
+```python
+text = "Hi"
+
+print(text * 3)
+```
+
+Output:
+
+```text
+HiHiHi
+```
+
+The string is repeated three times.
+
+### Another Example
+
+```python
+star = "*"
+
+print(star * 5)
+```
+
+Output:
+
+```text
+*****
+```
+
+### Repetition With a Variable
+
+```python
+text = "Python "
+
+print(text * 3)
+```
+
+Output:
+
+```text
+Python Python Python
+```
+
+The space is part of the string, so it is repeated too.
+
+---
+
+# 8. Basic String Methods
+
+A **method** is an operation associated with an object.
+
+Strings provide many built-in methods that make common text operations easier.
+
+A string method is generally written using:
+
+```python
+string.method()
+```
+
+For example:
+
+```python
+text = "python"
+
+print(text.upper())
+```
+
+Output:
+
+```text
+PYTHON
+```
+
+We will focus on a few basic and useful string methods.
+
+---
+
+# 9. Case Conversion
+
+Case conversion means changing the letter case of a string.
+
+Python provides methods such as:
+
+- `upper()`
+- `lower()`
+- `capitalize()`
+- `title()`
+
+---
+
+## 9.1 `upper()`
+
+`upper()` converts alphabetic characters to uppercase.
+
+```python
+text = "python"
+
+print(text.upper())
+```
+
+Output:
+
+```text
+PYTHON
+```
+
+---
+
+## 9.2 `lower()`
+
+`lower()` converts alphabetic characters to lowercase.
+
+```python
+text = "PYTHON"
+
+print(text.lower())
+```
+
+Output:
+
+```text
+python
+```
+
+---
+
+## 9.3 `capitalize()`
+
+`capitalize()` makes the first character uppercase and converts the remaining alphabetic characters to lowercase.
+
+```python
+text = "python programming"
+
+print(text.capitalize())
+```
+
+Output:
+
+```text
+Python programming
+```
+
+---
+
+## 9.4 `title()`
+
+`title()` converts the first character of each word to uppercase.
+
+```python
+text = "python programming language"
+
+print(text.title())
+```
+
+Output:
+
+```text
+Python Programming Language
+```
+
+---
+
+## 9.5 Comparing Case Conversion Methods
+
+| Method | Example | Result |
+|---|---|---|
+| `upper()` | `"python".upper()` | `PYTHON` |
+| `lower()` | `"PYTHON".lower()` | `python` |
+| `capitalize()` | `"python programming".capitalize()` | `Python programming` |
+| `title()` | `"python programming".title()` | `Python Programming` |
+
+---
+
+# 10. Searching in Strings
+
+Searching means finding whether or where particular text occurs inside a string.
+
+One useful string method for searching is `find()`.
+
+## 10.1 `find()`
+
+The `find()` method searches for a specified piece of text and returns its index when it finds it.
+
+Example:
+
+```python
+text = "Hello Python"
+
+print(text.find("Python"))
+```
+
+Output:
+
+```text
+6
+```
+
+Why `6`?
+
+The word `"Python"` starts at index `6`.
+
+---
+
+## 10.2 Searching for a Single Character
+
+```python
+text = "Python"
+
+print(text.find("t"))
+```
+
+Output:
+
+```text
+2
+```
+
+The character `t` is at index `2`.
+
+---
+
+## 10.3 When the Text Is Not Found
+
+If the searched text is not present, `find()` returns:
+
+```text
+-1
+```
+
+Example:
+
+```python
+text = "Python"
+
+print(text.find("Java"))
+```
+
+Output:
+
+```text
+-1
+```
+
+### Important Point
+
+`find()` does not produce an error just because the text is not found. It returns `-1`.
+
+---
+
+## 10.4 Searching Is Case-Sensitive
+
+Consider:
+
+```python
+text = "Python"
+
+print(text.find("python"))
+```
+
+Output:
+
+```text
+-1
+```
+
+Why?
+
+Because `"Python"` and `"python"` are different due to uppercase `P` and lowercase `p`.
+
+If required, case conversion can be used before searching.
+
+---
+
+# 11. Replacing Text
+
+The `replace()` method is used to replace one piece of text with another.
+
+Basic syntax:
+
+```python
+string.replace(old, new)
+```
+
+Example:
+
+```python
+text = "I like Java"
+
+new_text = text.replace("Java", "Python")
+
+print(new_text)
+```
+
+Output:
+
+```text
+I like Python
+```
+
+---
+
+## 11.1 Replacing a Character
+
+```python
+text = "banana"
+
+print(text.replace("a", "o"))
+```
+
+Output:
+
+```text
+bonono
+```
+
+Every matching `a` is replaced with `o`.
+
+---
+
+## 11.2 Replacing a Word
+
+```python
+text = "I love Python"
+
+print(text.replace("Python", "programming"))
+```
+
+Output:
+
+```text
+I love programming
+```
+
+---
+
+## 11.3 Replacing Only Some Occurrences
+
+The `replace()` method can also receive a third argument specifying the maximum number of replacements.
+
+Example:
+
+```python
+text = "apple apple apple"
+
+print(text.replace("apple", "mango", 1))
+```
+
+Output:
+
+```text
+mango apple apple
+```
+
+Only the first matching occurrence is replaced.
+
+---
+
+# 12. Strings Are Immutable
+
+A very important property of Python strings is that they are **immutable**.
+
+This means that after a string is created, its individual characters cannot be changed directly.
+
+Consider:
+
+```python
+text = "Python"
+```
+
+We cannot directly change one character like this:
+
+```python
+text[0] = "J"
+```
+
+This causes a `TypeError`.
+
+Instead, we create a new string.
+
+For example:
+
+```python
+text = "Python"
+
+new_text = "J" + text[1:]
+
+print(new_text)
+```
+
+Output:
+
+```text
+Jython
+```
+
+### Methods Also Return New Strings
+
+Consider:
+
+```python
+text = "python"
+
+new_text = text.upper()
+
+print(text)
+print(new_text)
+```
+
+Output:
+
+```text
+python
+PYTHON
+```
+
+The original string remains unchanged.
+
+> **Important:** String methods such as `upper()` and `replace()` return a new string rather than modifying the original string in place.
+
+---
+
+# 13. Putting String Concepts Together
+
+Let's combine several concepts in one example.
+
+```python
+name = "rahul kumar"
+
+print(name.title())
+print(len(name))
+print(name.find("kumar"))
+print(name.replace("rahul", "Amit"))
+```
+
+This example demonstrates:
+
+- Case conversion
+- String length
+- Searching
+- Replacing
+
+Each operation creates or returns a result that can be displayed or stored.
+
+---
+
+# 14. Important String Operations at a Glance
+
+| Operation | Example | Result |
+|---|---|---|
+| Indexing | `"Python"[0]` | `P` |
+| Negative indexing | `"Python"[-1]` | `n` |
+| Slicing | `"Python"[1:4]` | `yth` |
+| Length | `len("Python")` | `6` |
+| Concatenation | `"Py" + "thon"` | `Python` |
+| Repetition | `"Hi" * 3` | `HiHiHi` |
+| Uppercase | `"python".upper()` | `PYTHON` |
+| Lowercase | `"PYTHON".lower()` | `python` |
+| Capitalize | `"python".capitalize()` | `Python` |
+| Title case | `"hello world".title()` | `Hello World` |
+| Search | `"Python".find("t")` | `2` |
+| Replace | `"Java".replace("Java", "Python")` | `Python` |
+
+---
+
+# 15. Common Beginner Mistakes
+
+## Mistake 1: Forgetting That Indexing Starts at 0
+
+For:
+
+```python
+text = "Python"
+```
+
+The first character is:
+
+```python
+text[0]
+```
+
+not:
+
+```python
+text[1]
+```
+
+---
+
+## Mistake 2: Forgetting That Slice Stop Is Excluded
+
+For:
+
+```python
+text = "Python"
+```
+
+```python
+text[0:3]
+```
+
+produces:
+
+```text
+Pyt
+```
+
+not:
+
+```text
+Pyth
+```
+
+The stop index `3` is excluded.
+
+---
+
+## Mistake 3: Forgetting Spaces
+
+In:
+
+```python
+text = "Hello World"
+```
+
+the space is also a character.
+
+Therefore, it affects:
+
+- Index positions
+- String length
+- Searching
+- Slicing
+
+---
+
+## Mistake 4: Expecting `+` to Add a Space
+
+This:
+
+```python
+"Hello" + "World"
+```
+
+produces:
+
+```text
+HelloWorld
+```
+
+If you want a space:
+
+```python
+"Hello" + " " + "World"
+```
+
+---
+
+## Mistake 5: Forgetting That Strings Are Case-Sensitive
+
+These are different:
+
+```text
+Python
+python
+PYTHON
+```
+
+---
+
+## Mistake 6: Expecting String Methods to Change the Original String
+
+Consider:
+
+```python
+text = "python"
+
+text.upper()
+
+print(text)
+```
+
+Output:
+
+```text
+python
+```
+
+The result of `upper()` was not stored.
+
+If we want the converted string:
+
+```python
+text = text.upper()
+```
+
+Now `text` refers to the new uppercase string.
+
+---
+
+# 16. Key Points to Remember
+
+1. A string is a sequence of characters used to represent text.
+2. Strings can be created using single or double quotation marks.
+3. Python uses zero-based indexing.
+4. Negative indexing starts from `-1` at the end.
+5. Slicing extracts a part of a string.
+6. In a slice, the start index is included and the stop index is excluded.
+7. `len()` returns the number of characters in a string.
+8. `+` is used to concatenate strings.
+9. `*` can repeat a string.
+10. `upper()` converts text to uppercase.
+11. `lower()` converts text to lowercase.
+12. `capitalize()` capitalizes the first character.
+13. `title()` converts each word to title case.
+14. `find()` searches for text and returns its starting index.
+15. `find()` returns `-1` when the searched text is not found.
+16. `replace()` replaces specified text with other text.
+17. String operations are case-sensitive unless we explicitly convert the case.
+18. Strings are immutable, so individual characters cannot be changed directly.
+19. String methods generally return a new string rather than modifying the original string.
+
+---
+
+# Practice Problems
+
+> **Note:** These questions use only the concepts covered in this document. They are arranged from basic understanding to practical string problems.
+
+## A. Basic Understanding
+
+### 1.
+What is a string in Python?
+
+### 2.
+Write three examples of strings.
+
+### 3.
+What is the difference between `18` and `"18"`?
+
+### 4.
+Write two different ways to create the string `"Python"`.
+
+### 5.
+What is an empty string?
+
+### 6.
+Can a string contain spaces? Give an example.
+
+### 7.
+Can a string contain numbers? Give an example.
+
+### 8.
+What is string indexing?
+
+### 9.
+From which index does Python start string indexing?
+
+### 10.
+What is negative indexing?
+
+---
+
+## B. Indexing and Slicing
+
+### 11.
+What is the output?
+
+```python
+text = "Python"
+print(text[0])
+```
+
+### 12.
+What is the output?
+
+```python
+text = "Python"
+print(text[4])
+```
+
+### 13.
+What is the output?
+
+```python
+text = "Python"
+print(text[-1])
+```
+
+### 14.
+What is the output?
+
+```python
+text = "Python"
+print(text[-3])
+```
+
+### 15.
+What is the output?
+
+```python
+text = "Python"
+print(text[0:3])
+```
+
+### 16.
+What is the output?
+
+```python
+text = "Programming"
+print(text[3:7])
+```
+
+### 17.
+What is the output?
+
+```python
+text = "Python"
+print(text[:4])
+```
+
+### 18.
+What is the output?
+
+```python
+text = "Python"
+print(text[2:])
+```
+
+### 19.
+What is the output?
+
+```python
+text = "Python"
+print(text[-3:])
+```
+
+### 20.
+For the string below, write the positive and negative index of every character:
+
+```python
+text = "Hello"
+```
+
+---
+
+## C. Length, Concatenation, and Repetition
+
+### 21.
+Find the length of the following string using Python:
+
+```python
+text = "Programming"
+```
+
+### 22.
+Find the length of this string:
+
+```python
+text = "Hello World"
+```
+
+Also explain why the result includes the space.
+
+### 23.
+Join these two strings to produce `"HelloWorld"`:
+
+```python
+a = "Hello"
+b = "World"
+```
+
+### 24.
+Modify the previous problem so that the output becomes:
+
+```text
+Hello World
+```
+
+### 25.
+What is the output?
+
+```python
+text = "Hi"
+print(text * 4)
+```
+
+### 26.
+Create a program that prints:
+
+```text
+**********
+```
+
+using string repetition.
+
+---
+
+## D. String Methods
+
+### 27.
+Convert the following string to uppercase:
+
+```python
+text = "python programming"
+```
+
+### 28.
+Convert the following string to lowercase:
+
+```python
+text = "PYTHON PROGRAMMING"
+```
+
+### 29.
+Convert the following string so that the first character is uppercase and the remaining characters are lowercase:
+
+```python
+text = "pYTHON"
+```
+
+### 30.
+Convert the following string to title case:
+
+```python
+text = "python programming language"
+```
+
+### 31.
+Find the starting index of `"Python"`:
+
+```python
+text = "I am learning Python"
+```
+
+### 32.
+Search for `"Java"` in the following string and observe the result:
+
+```python
+text = "I am learning Python"
+```
+
+What does `find()` return when the text is not present?
+
+### 33.
+Replace `"Java"` with `"Python"`:
+
+```python
+text = "I like Java"
+```
+
+### 34.
+Replace `"bad"` with `"good"`:
+
+```python
+text = "This is a bad example"
+```
+
+---
+
+## E. Practical String Problems
+
+### 35.
+Create a program that stores your first name and last name in two strings and joins them with a space.
+
+### 36.
+Create a program that stores a word and prints:
+
+- The first character
+- The last character
+- The length of the word
+
+### 37.
+Create a program that stores:
+
+```text
+"Python Programming"
+```
+
+and prints only:
+
+```text
+Python
+```
+
+using slicing.
+
+### 38.
+Create a program that stores:
+
+```text
+"Python Programming"
+```
+
+and prints only:
+
+```text
+Programming
+```
+
+using slicing.
+
+### 39.
+Create a program that takes the string:
+
+```text
+"hello world"
+```
+
+and displays it in uppercase, lowercase, and title case.
+
+### 40.
+Create a program that stores:
+
+```text
+"I love Java"
+```
+
+and replaces `"Java"` with `"Python"`.
+
+### 41.
+Create a program that searches for `"Python"` in:
+
+```text
+"I am learning Python programming"
+```
+
+and prints its starting index.
+
+### 42.
+Create a program that repeats `"Python "` five times.
+
+### 43.
+Create a program that stores your name and prints the first three characters using slicing.
+
+### 44.
+Create a program that stores:
+
+```text
+"Hello Python"
+```
+
+and prints the last five characters using slicing.
+
+### 45.
+Create a small program that uses at least four string concepts from this topic:
+
+- Indexing
+- Slicing
+- Length
+- Concatenation
+- Repetition
+- Case conversion
+- Searching
+- Replacing
+
+Explain in comments which operation is being performed.
+
+---
+
+# Quick Revision
+
+Before moving to the next topic, make sure you can explain these concepts with your own examples:
+
+**String → Indexing → Slicing → Length → Concatenation → Repetition → Methods → Case Conversion → Searching → Replacing**
+
+Also make sure you remember these important rules:
+
+- Indexing starts from `0`.
+- Negative indexing starts from `-1`.
+- Slice start is included.
+- Slice stop is excluded.
+- Spaces are characters.
+- `+` joins strings.
+- `*` repeats strings.
+- `find()` returns `-1` when text is not found.
+- Strings are immutable.
+- String methods return new strings rather than directly changing the original string.

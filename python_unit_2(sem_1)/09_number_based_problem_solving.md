@@ -1,0 +1,2601 @@
+# 2.9 Number-Based Problem Solving
+
+## Objective
+
+After completing this topic, you should be able to understand and solve:
+
+- Digit extraction
+- Counting digits
+- Sum of digits
+- Reverse of a number
+- Palindrome numbers
+- Prime numbers
+- Factors
+- GCD and LCM
+- Fibonacci
+- Armstrong numbers
+- Other basic number problems
+
+> **Prerequisite:** You should understand variables, basic data types, arithmetic operators, `%`, `//`, input/output, comparison operators, Boolean expressions, logical operators, and conditional statements.
+
+---
+
+# 1. Introduction to Number-Based Problem Solving
+
+Many beginner programming problems are based on numbers.
+
+For example:
+
+- Find the digits of a number.
+- Count how many digits a number has.
+- Find the sum of its digits.
+- Reverse a number.
+- Check whether a number is a palindrome.
+- Check whether a number is prime.
+- Find all factors of a number.
+- Find GCD and LCM.
+- Generate Fibonacci numbers.
+- Check whether a number is an Armstrong number.
+
+These problems are important because they teach us how to convert a mathematical idea into a sequence of programming steps.
+
+A common pattern is:
+
+```text
+Take a number
+      ↓
+Process the number
+      ↓
+Repeat the required operation
+      ↓
+Build the result
+      ↓
+Check or display the result
+```
+
+---
+
+# 2. The Two Operators We Need Most
+
+Before solving digit-based problems, two arithmetic operators are especially important:
+
+```python
+%
+```
+
+and:
+
+```python
+//
+```
+
+---
+
+# 3. Modulus `%`
+
+The `%` operator gives the **remainder** after division.
+
+Example:
+
+```python
+17 % 10
+```
+
+The remainder is:
+
+```text
+7
+```
+
+Another example:
+
+```python
+25 % 10
+```
+
+Output:
+
+```text
+5
+```
+
+This becomes very useful when we want to extract the **last digit** of a number.
+
+---
+
+# 4. Integer Division `//`
+
+The `//` operator performs division and keeps the integer part of the result.
+
+Example:
+
+```python
+17 // 10
+```
+
+Output:
+
+```text
+1
+```
+
+Another example:
+
+```python
+258 // 10
+```
+
+Output:
+
+```text
+25
+```
+
+This becomes useful when we want to **remove the last digit** of a number.
+
+---
+
+# 5. The Important Digit Trick
+
+For a positive integer:
+
+```text
+number % 10
+```
+
+gives the last digit.
+
+And:
+
+```text
+number // 10
+```
+
+removes the last digit.
+
+For example:
+
+```text
+number = 472
+```
+
+Then:
+
+```text
+472 % 10 = 2
+472 // 10 = 47
+```
+
+So:
+
+```text
+% 10  → extract last digit
+// 10 → remove last digit
+```
+
+This simple idea is the foundation of many number-based problems.
+
+---
+
+# 6. Digit Extraction
+
+**Digit extraction** means taking individual digits from a number.
+
+Suppose:
+
+```text
+number = 472
+```
+
+The digits are:
+
+```text
+4, 7, 2
+```
+
+We can extract them from right to left.
+
+### First digit
+
+```python
+472 % 10
+```
+
+gives:
+
+```text
+2
+```
+
+Then remove the last digit:
+
+```python
+472 // 10
+```
+
+gives:
+
+```text
+47
+```
+
+### Second digit
+
+```python
+47 % 10
+```
+
+gives:
+
+```text
+7
+```
+
+Then:
+
+```python
+47 // 10
+```
+
+gives:
+
+```text
+4
+```
+
+### Third digit
+
+```python
+4 % 10
+```
+
+gives:
+
+```text
+4
+```
+
+Then:
+
+```python
+4 // 10
+```
+
+gives:
+
+```text
+0
+```
+
+So the digits were extracted as:
+
+```text
+2 → 7 → 4
+```
+
+which is from right to left.
+
+---
+
+# 7. Why Do We Need Repetition?
+
+For a number such as:
+
+```text
+472
+```
+
+we can manually write:
+
+```python
+digit = 472 % 10
+number = 472 // 10
+
+digit = number % 10
+number = number // 10
+```
+
+But what if the number contains:
+
+```text
+10 digits
+```
+
+or:
+
+```text
+20 digits
+```
+
+We do not want to write the same code repeatedly.
+
+We need a way to **repeat a block of code**.
+
+This is where loops become useful.
+
+> **Important:** Loops are introduced here only because number-based algorithms require repeated processing. A complete loop topic can be studied separately in greater detail.
+
+---
+
+# 8. `while` Loop
+
+A `while` loop repeats a block of code as long as a condition is `True`.
+
+### Basic Syntax
+
+```python
+while condition:
+    statement
+```
+
+The flow is:
+
+```text
+Check condition
+      ↓
+   True?
+   /   \
+ Yes    No
+  ↓      ↓
+Run     Stop
+block
+  ↓
+Check again
+```
+
+---
+
+# 9. Simple `while` Example
+
+```python
+number = 5
+
+while number > 0:
+    print(number)
+    number = number - 1
+```
+
+Output:
+
+```text
+5
+4
+3
+2
+1
+```
+
+Let's understand the important part:
+
+```python
+number = number - 1
+```
+
+This changes the value of `number`.
+
+Without changing the value, the condition may remain true forever.
+
+---
+
+# 10. Using `while` for Digit Processing
+
+Suppose:
+
+```python
+number = 472
+```
+
+We want to keep processing digits until no digits remain.
+
+A useful condition is:
+
+```python
+while number > 0:
+```
+
+Inside the loop:
+
+```python
+digit = number % 10
+number = number // 10
+```
+
+So the number becomes:
+
+```text
+472 → 47 → 4 → 0
+```
+
+This allows us to process each digit.
+
+---
+
+# 11. Counting Digits
+
+**Counting digits** means finding how many digits a number contains.
+
+For example:
+
+```text
+472
+```
+
+has:
+
+```text
+3 digits
+```
+
+And:
+
+```text
+58291
+```
+
+has:
+
+```text
+5 digits
+```
+
+---
+
+## 11.1 Algorithm
+
+For a positive number:
+
+1. Start a counter at `0`.
+2. Extract the last digit.
+3. Remove the last digit.
+4. Increase the counter.
+5. Repeat until the number becomes `0`.
+
+---
+
+## 11.2 Example
+
+Suppose:
+
+```text
+number = 472
+```
+
+Start:
+
+```text
+count = 0
+```
+
+### First iteration
+
+```text
+472 → 47
+count = 1
+```
+
+### Second iteration
+
+```text
+47 → 4
+count = 2
+```
+
+### Third iteration
+
+```text
+4 → 0
+count = 3
+```
+
+Therefore:
+
+```text
+472 has 3 digits.
+```
+
+---
+
+## 11.3 Program
+
+```python
+number = int(input("Enter a number: "))
+
+count = 0
+
+while number > 0:
+    number = number // 10
+    count = count + 1
+
+print("Number of digits:", count)
+```
+
+If the input is:
+
+```text
+472
+```
+
+Output:
+
+```text
+Number of digits: 3
+```
+
+---
+
+# 12. Special Case: Number `0`
+
+The above program gives:
+
+```text
+0 digits
+```
+
+for input `0`.
+
+But mathematically, `0` has **one digit**.
+
+So we should handle it separately.
+
+```python
+number = int(input("Enter a number: "))
+
+if number == 0:
+    count = 1
+else:
+    count = 0
+
+    while number > 0:
+        number = number // 10
+        count = count + 1
+
+print("Number of digits:", count)
+```
+
+This demonstrates an important programming idea:
+
+> **Some problems have special cases that need separate handling.**
+
+---
+
+# 13. Sum of Digits
+
+The **sum of digits** means adding all digits of a number.
+
+For example:
+
+```text
+472
+```
+
+has digits:
+
+```text
+4, 7, 2
+```
+
+So:
+
+```text
+4 + 7 + 2 = 13
+```
+
+Therefore:
+
+```text
+Sum of digits = 13
+```
+
+---
+
+# 14. Algorithm for Sum of Digits
+
+For a positive number:
+
+1. Start `sum = 0`.
+2. Extract the last digit using `% 10`.
+3. Add the digit to `sum`.
+4. Remove the last digit using `// 10`.
+5. Repeat until the number becomes `0`.
+
+---
+
+# 15. Step-by-Step Example
+
+Suppose:
+
+```text
+number = 472
+sum = 0
+```
+
+### First iteration
+
+```text
+digit = 472 % 10 = 2
+sum = 0 + 2 = 2
+number = 472 // 10 = 47
+```
+
+### Second iteration
+
+```text
+digit = 47 % 10 = 7
+sum = 2 + 7 = 9
+number = 47 // 10 = 4
+```
+
+### Third iteration
+
+```text
+digit = 4 % 10 = 4
+sum = 9 + 4 = 13
+number = 4 // 10 = 0
+```
+
+Final result:
+
+```text
+13
+```
+
+---
+
+# 16. Program for Sum of Digits
+
+```python
+number = int(input("Enter a number: "))
+
+total = 0
+
+while number > 0:
+    digit = number % 10
+    total = total + digit
+    number = number // 10
+
+print("Sum of digits:", total)
+```
+
+For input:
+
+```text
+472
+```
+
+Output:
+
+```text
+Sum of digits: 13
+```
+
+---
+
+# 17. Reverse of a Number
+
+Reversing a number means writing its digits in the opposite order.
+
+Example:
+
+```text
+1234
+```
+
+becomes:
+
+```text
+4321
+```
+
+Another example:
+
+```text
+507
+```
+
+becomes:
+
+```text
+705
+```
+
+---
+
+# 18. How Do We Build the Reverse?
+
+We already know how to extract the last digit.
+
+Suppose:
+
+```text
+number = 472
+```
+
+First digit extracted:
+
+```text
+2
+```
+
+We want to make:
+
+```text
+2
+```
+
+Then the next digit is:
+
+```text
+7
+```
+
+We want:
+
+```text
+27
+```
+
+Then the next digit is:
+
+```text
+4
+```
+
+We want:
+
+```text
+274
+```
+
+The important formula is:
+
+```python
+reverse = reverse * 10 + digit
+```
+
+---
+
+# 19. Understanding `reverse = reverse * 10 + digit`
+
+Suppose:
+
+```text
+reverse = 2
+digit = 7
+```
+
+Then:
+
+```text
+reverse * 10 = 20
+20 + 7 = 27
+```
+
+So:
+
+```text
+2 → 27
+```
+
+Next:
+
+```text
+reverse = 27
+digit = 4
+```
+
+Then:
+
+```text
+27 * 10 + 4
+= 270 + 4
+= 274
+```
+
+Therefore:
+
+```text
+2 → 27 → 274
+```
+
+---
+
+# 20. Program to Reverse a Number
+
+```python
+number = int(input("Enter a number: "))
+
+reverse = 0
+
+while number > 0:
+    digit = number % 10
+    reverse = reverse * 10 + digit
+    number = number // 10
+
+print("Reverse:", reverse)
+```
+
+For:
+
+```text
+472
+```
+
+Output:
+
+```text
+Reverse: 274
+```
+
+---
+
+# 21. Palindrome Numbers
+
+A **palindrome number** is a number that remains the same when reversed.
+
+Examples:
+
+```text
+121 → 121
+1331 → 1331
+555 → 555
+```
+
+These are palindrome numbers.
+
+Non-palindrome examples:
+
+```text
+123 → 321
+456 → 654
+```
+
+The original number and reversed number are different.
+
+---
+
+# 22. Palindrome Algorithm
+
+1. Store the original number.
+2. Reverse the number.
+3. Compare the reversed number with the original.
+4. If both are equal, the number is a palindrome.
+5. Otherwise, it is not a palindrome.
+
+---
+
+# 23. Palindrome Program
+
+```python
+number = int(input("Enter a number: "))
+
+original = number
+reverse = 0
+
+while number > 0:
+    digit = number % 10
+    reverse = reverse * 10 + digit
+    number = number // 10
+
+if original == reverse:
+    print("Palindrome")
+else:
+    print("Not palindrome")
+```
+
+For input:
+
+```text
+121
+```
+
+the reverse is:
+
+```text
+121
+```
+
+So the output is:
+
+```text
+Palindrome
+```
+
+---
+
+# 24. Why Do We Store the Original Number?
+
+Notice:
+
+```python
+original = number
+```
+
+Why?
+
+Because the digit-processing loop changes:
+
+```python
+number
+```
+
+until it becomes:
+
+```text
+0
+```
+
+After the loop, we still need the original value for comparison.
+
+Therefore:
+
+```python
+original = number
+```
+
+keeps a copy.
+
+This is an important problem-solving pattern:
+
+> **When processing changes a value but you still need the original value later, store the original value in another variable.**
+
+---
+
+# 25. Prime Numbers
+
+A **prime number** is a positive integer greater than `1` that has exactly two factors:
+
+```text
+1
+and
+itself
+```
+
+Examples:
+
+```text
+2, 3, 5, 7, 11, 13
+```
+
+are prime.
+
+---
+
+# 26. Non-Prime Numbers
+
+Examples:
+
+```text
+4
+6
+8
+9
+10
+```
+
+are not prime because they have factors other than `1` and themselves.
+
+For example:
+
+```text
+6
+```
+
+has factors:
+
+```text
+1, 2, 3, 6
+```
+
+So `6` is not prime.
+
+---
+
+# 27. Important Special Cases for Prime Numbers
+
+The numbers:
+
+```text
+0
+and
+1
+```
+
+are **not prime**.
+
+A prime number must be:
+
+```text
+greater than 1
+```
+
+---
+
+# 28. How to Check a Prime Number
+
+A simple beginner approach is:
+
+1. If the number is less than or equal to `1`, it is not prime.
+2. Check possible divisors from `2` up to the number before itself.
+3. If any number divides it exactly, it is not prime.
+4. If no divisor is found, it is prime.
+
+For example, check:
+
+```text
+7
+```
+
+Try:
+
+```text
+7 % 2
+7 % 3
+7 % 4
+7 % 5
+7 % 6
+```
+
+None gives `0`.
+
+Therefore, `7` is prime.
+
+---
+
+# 29. Prime Number Program
+
+```python
+number = int(input("Enter a number: "))
+
+if number <= 1:
+    print("Not prime")
+else:
+    divisor = 2
+    is_prime = True
+
+    while divisor < number:
+        if number % divisor == 0:
+            is_prime = False
+            break
+
+        divisor = divisor + 1
+
+    if is_prime:
+        print("Prime")
+    else:
+        print("Not prime")
+```
+
+### New keyword: `break`
+
+`break` immediately stops the current loop.
+
+Here, once we find a divisor, we already know the number is not prime, so there is no need to continue checking.
+
+---
+
+# 30. Factors
+
+A **factor** of a number is a number that divides it exactly.
+
+For example, factors of:
+
+```text
+12
+```
+
+are:
+
+```text
+1, 2, 3, 4, 6, 12
+```
+
+because each gives remainder `0` when dividing `12`.
+
+For example:
+
+```text
+12 % 3 = 0
+12 % 4 = 0
+```
+
+But:
+
+```text
+12 % 5 = 2
+```
+
+so `5` is not a factor of `12`.
+
+---
+
+# 31. Finding Factors
+
+We can check every number from `1` to the given number.
+
+For each candidate:
+
+```python
+if number % candidate == 0:
+```
+
+then the candidate is a factor.
+
+---
+
+# 32. Program to Find Factors
+
+```python
+number = int(input("Enter a number: "))
+
+candidate = 1
+
+while candidate <= number:
+    if number % candidate == 0:
+        print(candidate)
+
+    candidate = candidate + 1
+```
+
+For:
+
+```text
+12
+```
+
+Output:
+
+```text
+1
+2
+3
+4
+6
+12
+```
+
+---
+
+# 33. Prime Numbers and Factors
+
+The concepts of prime numbers and factors are closely related.
+
+A prime number has exactly:
+
+```text
+2 factors
+```
+
+For example:
+
+```text
+7 → 1, 7
+```
+
+A non-prime number has more than two factors.
+
+For example:
+
+```text
+8 → 1, 2, 4, 8
+```
+
+---
+
+# 34. GCD / HCF
+
+**GCD** means:
+
+> Greatest Common Divisor
+
+It is also called **HCF**:
+
+> Highest Common Factor
+
+The GCD of two numbers is the largest number that divides both numbers exactly.
+
+Example:
+
+```text
+12 and 18
+```
+
+Factors of `12`:
+
+```text
+1, 2, 3, 4, 6, 12
+```
+
+Factors of `18`:
+
+```text
+1, 2, 3, 6, 9, 18
+```
+
+Common factors:
+
+```text
+1, 2, 3, 6
+```
+
+The greatest one is:
+
+```text
+6
+```
+
+Therefore:
+
+```text
+GCD = 6
+```
+
+---
+
+# 35. Simple GCD Approach
+
+For beginners, we can check possible common divisors.
+
+Example:
+
+```python
+a = 12
+b = 18
+```
+
+We can check numbers from `1` up to the smaller number.
+
+If a number divides both:
+
+```python
+a % i == 0 and b % i == 0
+```
+
+then it is a common factor.
+
+We keep the greatest common factor found.
+
+---
+
+# 36. GCD Program
+
+```python
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+i = 1
+gcd = 1
+
+while i <= a and i <= b:
+    if a % i == 0 and b % i == 0:
+        gcd = i
+
+    i = i + 1
+
+print("GCD:", gcd)
+```
+
+For:
+
+```text
+12
+18
+```
+
+Output:
+
+```text
+GCD: 6
+```
+
+---
+
+# 37. LCM
+
+**LCM** means:
+
+> Least Common Multiple
+
+It is the smallest positive number that is divisible by both numbers.
+
+Example:
+
+For:
+
+```text
+4 and 6
+```
+
+Multiples of `4`:
+
+```text
+4, 8, 12, 16, 20, ...
+```
+
+Multiples of `6`:
+
+```text
+6, 12, 18, 24, ...
+```
+
+The first common positive multiple is:
+
+```text
+12
+```
+
+Therefore:
+
+```text
+LCM = 12
+```
+
+---
+
+# 38. GCD vs LCM
+
+| Concept | Meaning |
+|---|---|
+| GCD / HCF | Greatest number that divides both numbers |
+| LCM | Smallest positive number divisible by both numbers |
+
+For:
+
+```text
+12 and 18
+```
+
+we get:
+
+```text
+GCD = 6
+LCM = 36
+```
+
+---
+
+# 39. LCM Using a Simple Approach
+
+A beginner-friendly approach is to start from the larger number and keep checking multiples.
+
+Example:
+
+```text
+4 and 6
+```
+
+Start from:
+
+```text
+6
+```
+
+Check:
+
+```text
+6 % 4
+```
+
+Not zero.
+
+Then:
+
+```text
+12 % 4 = 0
+12 % 6 = 0
+```
+
+Therefore:
+
+```text
+LCM = 12
+```
+
+---
+
+# 40. LCM Program
+
+```python
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+if a > b:
+    lcm = a
+else:
+    lcm = b
+
+while True:
+    if lcm % a == 0 and lcm % b == 0:
+        break
+
+    lcm = lcm + 1
+
+print("LCM:", lcm)
+```
+
+### New idea: `while True`
+
+```python
+while True:
+```
+
+creates a loop whose condition is always true.
+
+The loop is stopped using:
+
+```python
+break
+```
+
+when the required answer is found.
+
+---
+
+# 41. Fibonacci Series
+
+The **Fibonacci series** is a sequence in which each new term is obtained by adding the previous two terms.
+
+A common starting sequence is:
+
+```text
+0, 1
+```
+
+Then:
+
+```text
+0 + 1 = 1
+1 + 1 = 2
+1 + 2 = 3
+2 + 3 = 5
+3 + 5 = 8
+```
+
+So the sequence becomes:
+
+```text
+0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+```
+
+---
+
+# 42. Fibonacci Logic
+
+We need two variables to store the previous two values.
+
+For example:
+
+```python
+a = 0
+b = 1
+```
+
+The next term is:
+
+```python
+next_term = a + b
+```
+
+Then we move forward:
+
+```text
+a ← b
+b ← next_term
+```
+
+This means the two stored values are updated for the next calculation.
+
+---
+
+# 43. Fibonacci Program
+
+```python
+n = int(input("Enter number of terms: "))
+
+a = 0
+b = 1
+count = 0
+
+while count < n:
+    print(a)
+
+    next_term = a + b
+    a = b
+    b = next_term
+
+    count = count + 1
+```
+
+For:
+
+```text
+n = 7
+```
+
+Output:
+
+```text
+0
+1
+1
+2
+3
+5
+8
+```
+
+---
+
+# 44. Understanding Fibonacci Updates
+
+Suppose:
+
+```text
+a = 0
+b = 1
+```
+
+### First term
+
+Print:
+
+```text
+0
+```
+
+Calculate:
+
+```text
+next_term = 0 + 1 = 1
+```
+
+Update:
+
+```text
+a = 1
+b = 1
+```
+
+### Next term
+
+Print:
+
+```text
+1
+```
+
+Calculate:
+
+```text
+1 + 1 = 2
+```
+
+Update:
+
+```text
+a = 1
+b = 2
+```
+
+Then the process continues.
+
+The important idea is:
+
+> Always keep the previous two Fibonacci values available to calculate the next one.
+
+---
+
+# 45. Armstrong Numbers
+
+An **Armstrong number** is a number that is equal to the sum of its digits, where each digit is raised to the power of the total number of digits.
+
+For a three-digit number:
+
+```text
+digit³ + digit³ + digit³
+```
+
+is calculated.
+
+Example:
+
+```text
+153
+```
+
+It has three digits.
+
+Calculate:
+
+```text
+1³ + 5³ + 3³
+```
+
+That is:
+
+```text
+1 + 125 + 27
+```
+
+which gives:
+
+```text
+153
+```
+
+Therefore:
+
+```text
+153 is an Armstrong number.
+```
+
+---
+
+# 46. Another Armstrong Example
+
+Consider:
+
+```text
+370
+```
+
+It has three digits.
+
+Calculate:
+
+```text
+3³ + 7³ + 0³
+```
+
+which is:
+
+```text
+27 + 343 + 0
+```
+
+giving:
+
+```text
+370
+```
+
+Therefore:
+
+```text
+370 is an Armstrong number.
+```
+
+---
+
+# 47. Armstrong Number Algorithm
+
+For a general number:
+
+1. Store the original number.
+2. Count the number of digits.
+3. Extract one digit at a time.
+4. Raise the digit to the power of the number of digits.
+5. Add the result to a total.
+6. Remove the processed digit.
+7. Repeat until all digits are processed.
+8. Compare the total with the original number.
+
+---
+
+# 48. Power Operator `**`
+
+Python uses:
+
+```python
+**
+```
+
+for exponentiation.
+
+Example:
+
+```python
+2 ** 3
+```
+
+means:
+
+```text
+2³
+```
+
+and gives:
+
+```text
+8
+```
+
+Another example:
+
+```python
+5 ** 2
+```
+
+gives:
+
+```text
+25
+```
+
+This is useful for Armstrong number calculations.
+
+---
+
+# 49. Armstrong Program
+
+```python
+number = int(input("Enter a number: "))
+
+original = number
+
+if number == 0:
+    digits = 1
+else:
+    digits = 0
+    temp = number
+
+    while temp > 0:
+        temp = temp // 10
+        digits = digits + 1
+
+temp = number
+total = 0
+
+while temp > 0:
+    digit = temp % 10
+    total = total + digit ** digits
+    temp = temp // 10
+
+if total == original:
+    print("Armstrong number")
+else:
+    print("Not an Armstrong number")
+```
+
+For:
+
+```text
+153
+```
+
+the output is:
+
+```text
+Armstrong number
+```
+
+---
+
+# 50. Why Do We Use `temp`?
+
+In the Armstrong program, we use:
+
+```python
+temp = number
+```
+
+because we need to process the number more than once.
+
+First, we need to count its digits.
+
+Then, we need to process its digits again.
+
+If we directly changed `number`, its original value would be lost.
+
+So:
+
+```text
+number → keeps the original value
+temp   → used for processing
+```
+
+This is another important problem-solving pattern.
+
+---
+
+# 51. Other Basic Number Problems
+
+The same concepts can be combined to solve many other beginner problems.
+
+Some useful examples are:
+
+- Even or odd
+- Positive, negative, or zero
+- Largest of two numbers
+- Largest of three numbers
+- Smallest of two numbers
+- Sum from `1` to `n`
+- Product from `1` to `n`
+- Perfect number
+- Count even and odd digits
+- Find the largest digit
+- Find the smallest digit
+
+The important idea is not to memorize programs.
+
+Instead:
+
+> **Understand the pattern used to solve the problem.**
+
+---
+
+# 52. Largest Digit of a Number
+
+Suppose:
+
+```text
+number = 58321
+```
+
+The digits are:
+
+```text
+5, 8, 3, 2, 1
+```
+
+The largest digit is:
+
+```text
+8
+```
+
+We can:
+
+1. Extract each digit.
+2. Compare it with the current largest digit.
+3. Replace the largest value when a bigger digit is found.
+
+Example:
+
+```python
+number = int(input("Enter a number: "))
+
+largest = 0
+
+while number > 0:
+    digit = number % 10
+
+    if digit > largest:
+        largest = digit
+
+    number = number // 10
+
+print("Largest digit:", largest)
+```
+
+For:
+
+```text
+58321
+```
+
+Output:
+
+```text
+Largest digit: 8
+```
+
+---
+
+# 53. Smallest Digit of a Number
+
+We can use a similar approach for the smallest digit.
+
+One simple method is to initialize the smallest value using the first digit.
+
+```python
+number = int(input("Enter a number: "))
+
+smallest = number % 10
+number = number // 10
+
+while number > 0:
+    digit = number % 10
+
+    if digit < smallest:
+        smallest = digit
+
+    number = number // 10
+
+print("Smallest digit:", smallest)
+```
+
+For:
+
+```text
+58321
+```
+
+Output:
+
+```text
+Smallest digit: 1
+```
+
+---
+
+# 54. Counting Even and Odd Digits
+
+Suppose:
+
+```text
+number = 123456
+```
+
+Its digits are:
+
+```text
+1, 2, 3, 4, 5, 6
+```
+
+Even digits:
+
+```text
+2, 4, 6
+```
+
+Odd digits:
+
+```text
+1, 3, 5
+```
+
+We can use:
+
+```python
+digit % 2 == 0
+```
+
+to check whether a digit is even.
+
+Example:
+
+```python
+number = int(input("Enter a number: "))
+
+even_count = 0
+odd_count = 0
+
+while number > 0:
+    digit = number % 10
+
+    if digit % 2 == 0:
+        even_count = even_count + 1
+    else:
+        odd_count = odd_count + 1
+
+    number = number // 10
+
+print("Even digits:", even_count)
+print("Odd digits:", odd_count)
+```
+
+---
+
+# 55. Sum from `1` to `n`
+
+Another basic number problem is:
+
+```text
+1 + 2 + 3 + ... + n
+```
+
+For example, if:
+
+```text
+n = 5
+```
+
+then:
+
+```text
+1 + 2 + 3 + 4 + 5 = 15
+```
+
+Program:
+
+```python
+n = int(input("Enter n: "))
+
+total = 0
+i = 1
+
+while i <= n:
+    total = total + i
+    i = i + 1
+
+print("Sum:", total)
+```
+
+---
+
+# 56. Product from `1` to `n`
+
+We can also calculate:
+
+```text
+1 × 2 × 3 × ... × n
+```
+
+For:
+
+```text
+n = 5
+```
+
+the result is:
+
+```text
+120
+```
+
+Program:
+
+```python
+n = int(input("Enter n: "))
+
+product = 1
+i = 1
+
+while i <= n:
+    product = product * i
+    i = i + 1
+
+print("Product:", product)
+```
+
+---
+
+# 57. Perfect Number
+
+A **perfect number** is a positive number that is equal to the sum of its proper factors.
+
+For example:
+
+```text
+6
+```
+
+Its proper factors are:
+
+```text
+1, 2, 3
+```
+
+Their sum is:
+
+```text
+1 + 2 + 3 = 6
+```
+
+Therefore:
+
+```text
+6 is a perfect number.
+```
+
+Program:
+
+```python
+number = int(input("Enter a number: "))
+
+total = 0
+i = 1
+
+while i < number:
+    if number % i == 0:
+        total = total + i
+
+    i = i + 1
+
+if total == number:
+    print("Perfect number")
+else:
+    print("Not a perfect number")
+```
+
+---
+
+# 58. Important Problem-Solving Patterns
+
+After studying these problems, several patterns should become familiar.
+
+## Pattern 1: Extract a digit
+
+```python
+digit = number % 10
+```
+
+## Pattern 2: Remove the last digit
+
+```python
+number = number // 10
+```
+
+## Pattern 3: Process every digit
+
+```python
+while number > 0:
+    digit = number % 10
+    # process digit
+    number = number // 10
+```
+
+## Pattern 4: Build a result
+
+For example, reverse:
+
+```python
+result = result * 10 + digit
+```
+
+## Pattern 5: Keep a running total
+
+```python
+total = total + value
+```
+
+## Pattern 6: Keep a running count
+
+```python
+count = count + 1
+```
+
+## Pattern 7: Compare while processing
+
+```python
+if value > largest:
+    largest = value
+```
+
+These patterns can be reused in many number-based problems.
+
+---
+
+# 59. Common Beginner Mistakes
+
+## Mistake 1: Using `/` Instead of `//`
+
+For digit removal, use:
+
+```python
+number // 10
+```
+
+not:
+
+```python
+number / 10
+```
+
+`/` produces a floating-point result, while `//` keeps the integer quotient.
+
+---
+
+## Mistake 2: Forgetting to Update the Number
+
+Consider:
+
+```python
+while number > 0:
+    digit = number % 10
+```
+
+If we never do:
+
+```python
+number = number // 10
+```
+
+the number may never become `0`, causing an infinite loop.
+
+---
+
+## Mistake 3: Forgetting to Initialize a Variable
+
+Before calculating a sum:
+
+```python
+total = 0
+```
+
+Before building a reverse:
+
+```python
+reverse = 0
+```
+
+Before counting:
+
+```python
+count = 0
+```
+
+The initial value depends on what the variable represents.
+
+---
+
+## Mistake 4: Losing the Original Number
+
+If you need the original number after processing it, store a copy:
+
+```python
+original = number
+```
+
+This is especially important for palindrome and Armstrong problems.
+
+---
+
+## Mistake 5: Treating `1` as Prime
+
+Remember:
+
+```text
+1 is not prime.
+```
+
+A prime number must be greater than `1`.
+
+---
+
+## Mistake 6: Forgetting the Special Case `0`
+
+For digit-counting, `0` has one digit.
+
+So code that repeatedly divides by `10` should handle `0` separately.
+
+---
+
+## Mistake 7: Confusing Factors and Multiples
+
+For:
+
+```text
+12
+```
+
+Factors include:
+
+```text
+1, 2, 3, 4, 6, 12
+```
+
+Multiples include:
+
+```text
+12, 24, 36, 48, ...
+```
+
+A factor divides the number exactly.
+
+A multiple is obtained by multiplying the number by an integer.
+
+---
+
+## Mistake 8: Wrong Fibonacci Update
+
+The Fibonacci values depend on the previous two values.
+
+Correct pattern:
+
+```python
+next_term = a + b
+a = b
+b = next_term
+```
+
+The order of these updates matters.
+
+---
+
+## Mistake 9: Using the Wrong Power for Armstrong Numbers
+
+For Armstrong numbers, the power depends on the **number of digits**.
+
+For a three-digit number:
+
+```text
+digit³
+```
+
+For a four-digit number:
+
+```text
+digit⁴
+```
+
+---
+
+# 60. Quick Comparison
+
+| Problem | Main Idea |
+|---|---|
+| Digit extraction | `% 10` |
+| Remove last digit | `// 10` |
+| Counting digits | Repeatedly remove digits and count |
+| Sum of digits | Extract and add each digit |
+| Reverse | `reverse * 10 + digit` |
+| Palindrome | Compare original and reverse |
+| Prime | Check whether any divisor exists |
+| Factors | Find numbers that divide exactly |
+| GCD | Greatest common divisor |
+| LCM | Smallest common multiple |
+| Fibonacci | Add previous two terms |
+| Armstrong | Sum digit powers based on digit count |
+| Largest digit | Compare each extracted digit |
+| Smallest digit | Compare each extracted digit |
+| Perfect number | Sum proper factors |
+
+---
+
+# 61. Key Points to Remember
+
+1. `% 10` extracts the last digit of a positive integer.
+2. `// 10` removes the last digit.
+3. Digit-processing problems commonly use a loop.
+4. `while` repeats a block while its condition is true.
+5. Always update the value controlling a `while` loop.
+6. Counting digits requires repeatedly removing digits and increasing a counter.
+7. Sum of digits uses a running total.
+8. Reverse uses `reverse = reverse * 10 + digit`.
+9. A palindrome is equal to its reverse.
+10. Store the original number when the processing changes the working number.
+11. A prime number is greater than `1` and has exactly two factors.
+12. Factors divide a number exactly.
+13. GCD/HCF is the greatest common divisor shared by two numbers.
+14. LCM is the smallest positive common multiple of two numbers.
+15. Fibonacci numbers are generated by adding the previous two terms.
+16. Armstrong numbers use digit powers based on the number of digits.
+17. `**` is the exponentiation operator in Python.
+18. Special cases such as `0` and `1` should be considered carefully.
+19. Many number problems use the same basic patterns repeatedly.
+20. Understanding the algorithm is more important than memorizing the code.
+
+---
+
+# Practice Problems
+
+> **Note:** These questions are based only on concepts covered in this document and the previous topics. Do not use lists, tuples, dictionaries, functions, recursion, classes, or other advanced topics.
+
+## A. Digit Extraction and Basic Processing
+
+### 1.
+Take a positive integer from the user and print its last digit.
+
+### 2.
+Take a positive integer and remove its last digit using `//`.
+
+For example:
+
+```text
+Input: 5827
+Output: 582
+```
+
+### 3.
+Take a three-digit number and print its digits separately.
+
+For example:
+
+```text
+Input: 472
+Output:
+4
+7
+2
+```
+
+### 4.
+Take a number and print its last two digits.
+
+### 5.
+Take a number and print the number after removing its last two digits.
+
+---
+
+## B. Counting and Sum of Digits
+
+### 6.
+Write a program to count the number of digits in a positive integer.
+
+### 7.
+Modify the digit-counting program so that input `0` correctly produces:
+
+```text
+1
+```
+
+### 8.
+Write a program to find the sum of all digits of a number.
+
+Example:
+
+```text
+Input: 472
+Output: 13
+```
+
+### 9.
+Write a program to count how many even digits are present in a number.
+
+### 10.
+Write a program to count how many odd digits are present in a number.
+
+---
+
+## C. Reverse and Palindrome
+
+### 11.
+Write a program to reverse a number.
+
+Example:
+
+```text
+Input: 12345
+Output: 54321
+```
+
+### 12.
+Write a program to check whether a number is a palindrome.
+
+### 13.
+Take a number and print both:
+
+```text
+Original number
+Reverse
+```
+
+### 14.
+Write a program that checks whether a three-digit number is a palindrome.
+
+### 15.
+Write a program that counts the digits and then checks whether the number is a palindrome.
+
+---
+
+## D. Prime and Factors
+
+### 16.
+Write a program to check whether a number is prime.
+
+### 17.
+Write a program to print all factors of a number.
+
+### 18.
+Write a program to count the number of factors of a given number.
+
+### 19.
+Write a program to determine whether a number has exactly two factors.
+
+Use this idea to identify whether it is prime.
+
+### 20.
+Take two numbers and find their GCD/HCF using repeated checking of common divisors.
+
+---
+
+## E. GCD, LCM, and Fibonacci
+
+### 21.
+Take two numbers and find their LCM using the simple repeated-multiple approach.
+
+### 22.
+Write a program that finds both the GCD and LCM of two positive numbers.
+
+### 23.
+Generate the first `n` Fibonacci terms.
+
+For example, for:
+
+```text
+n = 8
+```
+
+display:
+
+```text
+0 1 1 2 3 5 8 13
+```
+
+### 24.
+Take `n` from the user and calculate the sum of the first `n` Fibonacci terms.
+
+### 25.
+Take two starting values and generate a sequence where every next value is the sum of the previous two values.
+
+---
+
+## F. Armstrong and Other Number Problems
+
+### 26.
+Write a program to check whether a three-digit number is an Armstrong number.
+
+### 27.
+Write a program that works for an Armstrong number with any number of digits by first counting its digits.
+
+### 28.
+Write a program to find the largest digit in a number.
+
+### 29.
+Write a program to find the smallest digit in a number.
+
+### 30.
+Create a **Number Analysis Program** that takes one positive integer and displays:
+
+```text
+Number of digits
+Sum of digits
+Reverse
+Largest digit
+Smallest digit
+```
+
+Then also display whether the number is:
+
+```text
+Palindrome
+Prime
+Armstrong
+```
+
+Use the appropriate algorithm for each result.
+
+---
+
+# Quick Revision Activity
+
+Before moving to the next topic, make sure you can explain these patterns without memorizing them:
+
+### Extract a digit
+
+```python
+digit = number % 10
+```
+
+### Remove a digit
+
+```python
+number = number // 10
+```
+
+### Process every digit
+
+```python
+while number > 0:
+    digit = number % 10
+    # process digit
+    number = number // 10
+```
+
+### Build a reverse
+
+```python
+reverse = reverse * 10 + digit
+```
+
+### Keep a running sum
+
+```python
+total = total + value
+```
+
+### Keep a running count
+
+```python
+count = count + 1
+```
+
+### Compare a result
+
+```python
+if original == result:
+    ...
+```
+
+The goal is to understand **why each pattern is used**, so that you can create a solution for a new number problem instead of only copying an existing program.
